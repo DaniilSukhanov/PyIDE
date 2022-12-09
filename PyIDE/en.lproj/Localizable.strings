@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  PyIDE
+
+  Created by Даниил Суханов on 01.12.2022.
+  
+*/
+
+
+"ProjectCreatingView" = "Create a new project";
