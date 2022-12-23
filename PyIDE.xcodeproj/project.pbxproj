@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E48E28512943C440005CFDAE /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E28502943C440005CFDAE /* Project.swift */; };
 		E4ABB7A9291EA78B00AE1E1D /* PyIDEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABB7A8291EA78B00AE1E1D /* PyIDEApp.swift */; };
 		E4ABB7AD291EA78C00AE1E1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4ABB7AC291EA78C00AE1E1D /* Assets.xcassets */; };
 		E4ABB7B0291EA78C00AE1E1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4ABB7AF291EA78C00AE1E1D /* Preview Assets.xcassets */; };
-		E4EBEE5129392D1000664DBB /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE5029392D1000664DBB /* StartingView.swift */; };
+		E4B357E32955E7010016283D /* EnvironmentValues+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B357E22955E7010016283D /* EnvironmentValues+Additions.swift */; };
+		E4EBEE5129392D1000664DBB /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE5029392D1000664DBB /* OptionsView.swift */; };
 		E4EBEE5329392E3100664DBB /* ProjectSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE5229392E3100664DBB /* ProjectSelectionView.swift */; };
 		E4EBEE5C293931BA00664DBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4EBEE5E293931BA00664DBB /* Localizable.strings */; };
 		E4EBEE612939325500664DBB /* ProjectCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE602939325500664DBB /* ProjectCreatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E48E28502943C440005CFDAE /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		E4ABB7A5291EA78B00AE1E1D /* PyIDE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PyIDE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4ABB7A8291EA78B00AE1E1D /* PyIDEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyIDEApp.swift; sourceTree = "<group>"; };
 		E4ABB7AC291EA78C00AE1E1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4ABB7AF291EA78C00AE1E1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E4EBEE5029392D1000664DBB /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
+		E4B357E22955E7010016283D /* EnvironmentValues+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Additions.swift"; sourceTree = "<group>"; };
+		E4EBEE5029392D1000664DBB /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		E4EBEE5229392E3100664DBB /* ProjectSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectionView.swift; sourceTree = "<group>"; };
 		E4EBEE5D293931BA00664DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4EBEE5F293931BF00664DBB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -58,13 +62,15 @@
 		E4ABB7A7291EA78B00AE1E1D /* PyIDE */ = {
 			isa = PBXGroup;
 			children = (
+				E4B357E22955E7010016283D /* EnvironmentValues+Additions.swift */,
 				E4ABB7A8291EA78B00AE1E1D /* PyIDEApp.swift */,
 				E4EBEE5229392E3100664DBB /* ProjectSelectionView.swift */,
-				E4EBEE5029392D1000664DBB /* StartingView.swift */,
+				E4EBEE5029392D1000664DBB /* OptionsView.swift */,
 				E4EBEE602939325500664DBB /* ProjectCreatingView.swift */,
 				E4ABB7AC291EA78C00AE1E1D /* Assets.xcassets */,
 				E4ABB7AE291EA78C00AE1E1D /* Preview Content */,
 				E4EBEE5E293931BA00664DBB /* Localizable.strings */,
+				E48E28502943C440005CFDAE /* Project.swift */,
 			);
 			path = PyIDE;
 			sourceTree = "<group>";
@@ -149,9 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4EBEE5129392D1000664DBB /* StartingView.swift in Sources */,
+				E4EBEE5129392D1000664DBB /* OptionsView.swift in Sources */,
+				E4B357E32955E7010016283D /* EnvironmentValues+Additions.swift in Sources */,
 				E4ABB7A9291EA78B00AE1E1D /* PyIDEApp.swift in Sources */,
 				E4EBEE5329392E3100664DBB /* ProjectSelectionView.swift in Sources */,
+				E48E28512943C440005CFDAE /* Project.swift in Sources */,
 				E4EBEE612939325500664DBB /* ProjectCreatingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

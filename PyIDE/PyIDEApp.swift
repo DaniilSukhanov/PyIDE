@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct PyIDEApp: App {
+    @State var stackViews = NavigationPath()
+    
     var body: some Scene {
         WindowGroup {
-            StartingView()
+            OptionsView().environment(\.stackViews, $stackViews)
         }
     }
 }
