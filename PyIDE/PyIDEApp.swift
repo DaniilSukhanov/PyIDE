@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct PyIDEApp: App {
-    @State var stackViews = NavigationPath()
+    @State private var stackViews = NavigationPath()
     
     var body: some Scene {
         WindowGroup {

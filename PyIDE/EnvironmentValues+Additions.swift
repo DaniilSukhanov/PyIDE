@@ -14,7 +14,7 @@ struct StackViewsKey: EnvironmentKey {
 extension EnvironmentValues {
     var stackViews: Binding<NavigationPath> {
         get { self[StackViewsKey.self] }
-        set { self[StackViewsKey.self] = newValue }
+        set { self[StackViewsKey.self] = newValue}
     }
 }
 
