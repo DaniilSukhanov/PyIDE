@@ -9,21 +9,22 @@ import SwiftUI
 
 struct ProjectSelectionView: View {
     @Binding var collectionProjects: [Project]
-    @Environment(\.stackViews) var stackViews
+    @EnvironmentObject var listViews: ListViews
     
     var body: some View {
         List(collectionProjects) { project in
             Button(project.name) {
-                stackViews.wrappedValue.append(project)
+                listViews.append(project)
             }
         }
     }
 }
 
 struct ProjectSelectionView_Previews: PreviewProvider {
-    @State static private var collectionProjects = [Project(name: "Parser"), Project(name: "Calculator")]
+    @State static private var collectionProjects = try! [Project(name: "Parser"), Project(name: "Calculator")]
     
     static var previews: some View {
         ProjectSelectionView(collectionProjects: $collectionProjects)
     }
 }
+

@@ -15,15 +15,15 @@ struct ProjectCreatingView: View {
     var body: some View {
         TextField("", text: $nameProject)
         Button("Create a new Project") {
-            collectionProjects.append(Project(name: nameProject))
+            collectionProjects.append(try! Project(name: nameProject))
         }
     }
 }
 
 struct ProjectCreatingView_Previews: PreviewProvider {
     @State private static var projects = [
-        Project(name: "Test"),
-        Project(name: "Raw")
+        try! Project(name: "Test"),
+        try! Project(name: "Raw")
     ]
     
     static var previews: some View {

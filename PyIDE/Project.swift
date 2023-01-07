@@ -9,10 +9,21 @@ import Foundation
 
 
 class Project: ObservableObject, Identifiable, Hashable {
-    @Published var name: String
+    private enum ProjectError: Error {
+        case failedInitialize(Error)
+    }
     
-    init(name: String) {
+    @Published var name: String
+    var virtualFileSystem: VirtualFileSystem?
+    
+    init(name: String) throws {
         self.name = name
+        do {
+            self.virtualFileSystem = try VirtualFileSystem(project: self)
+        } catch {
+            throw ProjectError.failedInitialize(error)
+        }
+        
     }
     
     static func == (lhs: Project, rhs: Project) -> Bool {

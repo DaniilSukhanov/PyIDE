@@ -13,17 +13,18 @@ struct OptionsView: View {
         case selectingProject = "Select a project"
         case creatingProject = "Create a new project"
     }
-    
-    @Environment(\.stackViews) var stackViews
+
+    @State private var text = ""
+    @EnvironmentObject var listViews: ListViews
     @State private var selectedDetailView: DetailContentViews?
-    @State private var projects: [Project] = [Project(name: "123")]
+    @State private var projects: [Project] = [try! Project(name: "123")]
     
     var body: some View {
-        NavigationStack(path: stackViews) {
+        NavigationStack(path: $listViews.data) {
             NavigationSplitView {
                 List(DetailContentViews.allCases, id: \.self, selection: $selectedDetailView) { detailView in
                     Text(detailView.rawValue)
-                }
+                }.listStyle(.insetGrouped)
             } detail: {
                 switch selectedDetailView {
                 case .selectingProject: ProjectSelectionView(collectionProjects: $projects)
@@ -31,7 +32,7 @@ struct OptionsView: View {
                 case .none: Text("nil")
                 }
             }.navigationDestination(for: Project.self) { project in
-                Text(project.name)
+                ProjectView(project: project)
             }
         }
         

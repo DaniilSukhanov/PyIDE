@@ -7,13 +7,16 @@
 
 import SwiftUI
 
+
 @main
 struct PyIDEApp: App {
-    @State private var stackViews = NavigationPath()
+    @StateObject private var listViews = ListViews()
+    @State private var projects = [Project]()
     
     var body: some Scene {
         WindowGroup {
-            OptionsView().environment(\.stackViews, $stackViews)
+            OptionsView()
+                .environmentObject(self.listViews)
         }
     }
 }
