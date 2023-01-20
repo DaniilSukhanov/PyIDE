@@ -9,7 +9,6 @@ import SwiftUI
 
 struct VirtualFileSystemView: View {
     @ObservedObject var virtualFileSystem: VirtualFileSystem
-    private(set) var selection: Any?
     @ObservedObject var rootDirectory: VFSDirectory
     
     init (virtualFileSystem: VirtualFileSystem) {
@@ -19,7 +18,13 @@ struct VirtualFileSystemView: View {
     
     var body: some View {
         List(rootDirectory.storedComponents!, children: \.storedComponents) { item in
-            Text(item.name)
+            if item is VFSDirectory {
+                Text(item.name)
+            } else {
+                Button(item.name) {
+                    virtualFileSystem.setCurrentFile(item as! VFSFile)
+                }
+            }
         }
     }
 }
@@ -31,3 +36,5 @@ struct VirtualFileSystemView_Previews: PreviewProvider {
         return VirtualFileSystemView(virtualFileSystem: vfs)
     }
 }
+
+

@@ -67,27 +67,36 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
 }
 
 class VFSFile: VFSComponent {
-    private(set) var data: String?
+    var data: String?
     
     required init(_ name: String, parentDirectory: VFSDirectory) {
         super.init(name, parentDirectory: parentDirectory)
         try! create()
+        pullData()
     }
     
     required init(_ name: String, url: URL) {
         super.init(name, url: url)
         try! create()
+        pullData()
     }
     
     private func create() throws {
         let manager = FileManager()
+        if manager.fileExists(atPath: url.path()) {
+            return
+        }
         if !manager.createFile(atPath: url.path(), contents: nil) {
             throw VFSError.failedCreateVFSComponent("Невозможно создать файл")
         }
     }
     
-    func updateData() {
+    func pullData() {
         data = try! String(contentsOf: url)
+    }
+    
+    func pushData(_ data: String) {
+        try! data.write(to: url, atomically: false, encoding: .utf8)
     }
 }
 
