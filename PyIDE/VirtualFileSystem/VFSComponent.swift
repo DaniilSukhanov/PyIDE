@@ -31,28 +31,6 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
         self.url = url.appendingPathComponent(name)
     }
     
-    func appendComponent(_ component: VFSComponent) throws {
-        guard let _ = storedComponents else {
-            throw VFSError.failedCreateVFSComponent("Хранимые свойства не инициализированы")
-        }
-        if storedComponents!.contains(component) {
-            throw VFSError.failedCreateVFSComponent("Нельзя добавить компонент, если он уже находиться в хранимых компонентов")
-        }
-        storedComponents!.append(component)
-
-    }
-    
-    func removeComponent(_ component: VFSComponent) throws {
-        guard let _ = storedComponents else {
-            throw VFSError.failedRemoveVFSComponent("Хранимые свойства не инициализированы")
-        }
-        let index = storedComponents?.firstIndex(of: component)
-        guard let _ = index else {
-            throw VFSError.failedRemoveVFSComponent("Не удалось найти элемент в хранимых компонентов")
-        }
-        storedComponents!.remove(at: index!)
-    }
-    
     fileprivate func initStoreComponents() {
         self.storedComponents = .init()
     }
@@ -64,10 +42,15 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.name)
     }
+    
+    func kill() {
+        let manager = FileManager.default
+        try! manager.removeItem(at: url)
+    }
 }
 
 class VFSFile: VFSComponent {
-    var data: String?
+    @Published var data: String?
     
     required init(_ name: String, parentDirectory: VFSDirectory) {
         super.init(name, parentDirectory: parentDirectory)
@@ -76,9 +59,7 @@ class VFSFile: VFSComponent {
     }
     
     required init(_ name: String, url: URL) {
-        super.init(name, url: url)
-        try! create()
-        pullData()
+        fatalError("init(_:url:) has not been implemented")
     }
     
     private func create() throws {
@@ -122,6 +103,28 @@ class VFSDirectory: VFSComponent {
                 throw VFSError.failedCreateVFSComponent(error.localizedDescription)
             }
         }
+    }
+    
+    func appendComponent(_ component: VFSComponent) throws {
+        guard let _ = storedComponents else {
+            throw VFSError.failedCreateVFSComponent("Хранимые свойства не инициализированы")
+        }
+        if storedComponents!.contains(component) {
+            throw VFSError.failedCreateVFSComponent("Нельзя добавить компонент, если он уже находиться в хранимых компонентов")
+        }
+        storedComponents!.append(component)
+
+    }
+    
+    func removeComponent(_ component: VFSComponent) throws {
+        guard let _ = storedComponents else {
+            throw VFSError.failedRemoveVFSComponent("Хранимые свойства не инициализированы")
+        }
+        let index = storedComponents?.firstIndex(of: component)
+        guard let _ = index else {
+            throw VFSError.failedRemoveVFSComponent("Не удалось найти элемент в хранимых компонентов")
+        }
+        storedComponents!.remove(at: index!)
     }
     
 }

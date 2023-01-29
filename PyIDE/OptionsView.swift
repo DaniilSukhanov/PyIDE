@@ -22,6 +22,7 @@ struct OptionsView: View {
     var body: some View {
         NavigationStack(path: $listViews.data) {
             NavigationSplitView {
+                Text("Welcome to PyIDE").font(.largeTitle)
                 List(DetailContentViews.allCases, id: \.self, selection: $selectedDetailView) { detailView in
                     Text(detailView.rawValue)
                 }.listStyle(.insetGrouped)
@@ -29,7 +30,7 @@ struct OptionsView: View {
                 switch selectedDetailView {
                 case .selectingProject: ProjectSelectionView(collectionProjects: $projects)
                 case .creatingProject: ProjectCreatingView(collectionProjects: $projects)
-                case .none: Text("nil")
+                case .none: Text("")
                 }
             }.navigationDestination(for: Project.self) { project in
                 ProjectView(project: project)

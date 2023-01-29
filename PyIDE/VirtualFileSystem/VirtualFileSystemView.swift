@@ -17,13 +17,24 @@ struct VirtualFileSystemView: View {
     }
     
     var body: some View {
-        List(rootDirectory.storedComponents!, children: \.storedComponents) { item in
-            if item is VFSDirectory {
-                Text(item.name)
-            } else {
-                Button(item.name) {
-                    virtualFileSystem.setCurrentFile(item as! VFSFile)
+        VStack {
+            List(rootDirectory.storedComponents!, children: \.storedComponents) { item in
+                Group {
+                    if item is VFSDirectory {
+                        Text(item.name)
+                    } else {
+                        Button(item.name) {
+                            virtualFileSystem.setCurrentFile(item as! VFSFile)
+                        }
+                    }
+                }.swipeActions {
+                    Button {
+                        item
+                    } label: {
+                        Text("delete")
+                    }
                 }
+                
             }
         }
     }

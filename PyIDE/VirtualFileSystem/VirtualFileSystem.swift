@@ -9,8 +9,8 @@ import Foundation
 
 class VirtualFileSystem: ObservableObject {
     private(set) var project: Project
-    var rootDirectory: VFSDirectory
-    var currentFile: VFSFile?
+    @Published var rootDirectory: VFSDirectory
+    @Published var currentFile: VFSFile?
 
     init(project: Project) throws {
         self.project = project
@@ -28,7 +28,7 @@ class VirtualFileSystem: ObservableObject {
         currentFile = file
     }
     
-    private func updateStoredComponents() {
+    func updateStoredComponents() {
         var stackDirectory = [rootDirectory], fileNames: [String], manager = FileManager.default,
             isDirectory: ObjCBool = false, component: VFSComponent, url: URL
         while !stackDirectory.isEmpty {

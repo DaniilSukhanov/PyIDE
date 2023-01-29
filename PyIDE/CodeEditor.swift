@@ -9,8 +9,8 @@ import SwiftUI
 import Foundation
 
 struct CodeEditor: UIViewRepresentable {
-    class Coordinator: NSObject, UITextViewDelegate {
-        var parentView: CodeEditor
+    class Coordinator: NSObject, UITextViewDelegate, ObservableObject {
+        @Published var parentView: CodeEditor
         
         init(parentView: CodeEditor) {
             self.parentView = parentView
@@ -20,25 +20,31 @@ struct CodeEditor: UIViewRepresentable {
         }
     }
     
-    var virtualFileSystem: VirtualFileSystem
+    
+    @ObservedObject var virtualFileSystem: VirtualFileSystem
+    private(set) var uiTextView: UITextView = UITextView()
     
     func makeCoordinator() -> Coordinator {
         Coordinator(parentView: self)
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        print()
+        guard let currentFile = virtualFileSystem.currentFile else {
+            print("Не удалось обновить файл.")
+            return
+        }
+        uiTextView.text = currentFile.data!
     }
     
     func makeUIView(context: Context) -> some UIView {
-        let view = UITextView(), file: VFSFile? = virtualFileSystem.currentFile
-        view.delegate = context.coordinator
+        let file: VFSFile? = virtualFileSystem.currentFile
+        uiTextView.delegate = context.coordinator
         if file != nil {
-            view.text = file!.data!
+            uiTextView.text = file!.data
         }
-        
-        return view
+        return uiTextView
     }
+
     
 }
 
