@@ -16,28 +16,26 @@ struct CodeEditor: UIViewRepresentable {
             self.parentView = parentView
         }
         func textViewDidChange(_ textView: UITextView) {
-            parentView.virtualFileSystem.currentFile!.data = textView.text
+            (parentView.container!.component as! VFSFile).data = textView.text
         }
     }
-    
-    
-    @ObservedObject var virtualFileSystem: VirtualFileSystem
+    @Binding var container: VFSContainer?
     private(set) var uiTextView: UITextView = UITextView()
     
     func makeCoordinator() -> Coordinator {
         Coordinator(parentView: self)
     }
     
+    func pushDataCurrentFile() {
+        (container!.component as! VFSFile).pushData(uiTextView.text)
+    }
+    
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        guard let currentFile = virtualFileSystem.currentFile else {
-            print("Не удалось обновить файл.")
-            return
-        }
-        uiTextView.text = currentFile.data!
+        uiTextView.text = (container!.component as! VFSFile).data!
     }
     
     func makeUIView(context: Context) -> some UIView {
-        let file: VFSFile? = virtualFileSystem.currentFile
+        let file = container!.component as? VFSFile
         uiTextView.delegate = context.coordinator
         if file != nil {
             uiTextView.text = file!.data
@@ -49,9 +47,8 @@ struct CodeEditor: UIViewRepresentable {
 }
 
 struct CodeEditor_Previews: PreviewProvider {
-    @StateObject static var vfs = try! VirtualFileSystem(project: Project(name: "test"))
     
     static var previews: some View {
-        CodeEditor(virtualFileSystem: vfs)
+        Text("")
     }
 }

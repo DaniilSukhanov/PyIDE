@@ -9,32 +9,57 @@ import SwiftUI
 
 struct VirtualFileSystemView: View {
     @ObservedObject var virtualFileSystem: VirtualFileSystem
-    @ObservedObject var rootDirectory: VFSDirectory
+    @StateObject var rootDirectory: VFSDirectory
+    @Binding private var selectedVFSContainer: VFSContainer?
+    @State private var isShowingSheet = false
+    @State private var selectedDirectory: VFSContainer
     
-    init (virtualFileSystem: VirtualFileSystem) {
+    init (virtualFileSystem: VirtualFileSystem, selectedVFSContainer: Binding<VFSContainer?>) {
         self.virtualFileSystem = virtualFileSystem
-        self.rootDirectory = virtualFileSystem.rootDirectory
+        self._rootDirectory = StateObject(wrappedValue: virtualFileSystem.rootDirectory)
+        self._selectedVFSContainer = selectedVFSContainer
+        self.selectedDirectory = virtualFileSystem.rootDirectory.pack()
     }
     
     var body: some View {
         VStack {
-            List(rootDirectory.storedComponents!, children: \.storedComponents) { item in
+            List(rootDirectory.storedComponents!, children: \.component.storedComponents, selection: $selectedVFSContainer) { item in
+                let component = item.component
                 Group {
-                    if item is VFSDirectory {
-                        Text(item.name)
+                    if component is VFSDirectory {
+                        Text(component.name)
+                            .swipeActions {
+                                Button {
+                                    selectedDirectory = item
+                                } label: {
+                                    Text("new file")
+                                }
+                            }
                     } else {
-                        Button(item.name) {
-                            virtualFileSystem.setCurrentFile(item as! VFSFile)
+                        Button(component.name) {
+                            selectedVFSContainer = item
                         }
                     }
                 }.swipeActions {
-                    Button {
-                        item
-                    } label: {
-                        Text("delete")
+                    Button("delete") {
+                        item.component.kill()
+                        virtualFileSystem.updateStoredComponents()
                     }
                 }
-                
+            }.listStyle(.insetGrouped)
+        }.toolbar {
+            Button {
+                isShowingSheet.toggle()
+            } label: {
+                Image(systemName: "doc.fill.badge.plus")
+            }
+        }.sheet(isPresented: $isShowingSheet) {
+            CreatingFileView(currentContainer: $selectedDirectory, virtualFileSystem: virtualFileSystem)
+        }.toolbar {
+            Button {
+                virtualFileSystem.updateStoredComponents()
+            } label: {
+                Image(systemName: "goforward")
             }
         }
     }
@@ -42,9 +67,7 @@ struct VirtualFileSystemView: View {
 
 struct VirtualFileSystemView_Previews: PreviewProvider {
     static var previews: some View {
-        let project = try! Project(name: "qwerty")
-        let vfs = try! VirtualFileSystem(project: project)
-        return VirtualFileSystemView(virtualFileSystem: vfs)
+        Text("")
     }
 }
 

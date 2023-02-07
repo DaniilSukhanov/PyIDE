@@ -10,7 +10,6 @@ import Foundation
 class VirtualFileSystem: ObservableObject {
     private(set) var project: Project
     @Published var rootDirectory: VFSDirectory
-    @Published var currentFile: VFSFile?
 
     init(project: Project) throws {
         self.project = project
@@ -21,11 +20,6 @@ class VirtualFileSystem: ObservableObject {
         print(url.path)
         rootDirectory = VFSDirectory(project.name, url: url)
         updateStoredComponents()
-    }
-    
-    func setCurrentFile(_ file: VFSFile) {
-        file.pullData()
-        currentFile = file
     }
     
     func updateStoredComponents() {
@@ -52,11 +46,9 @@ class VirtualFileSystem: ObservableObject {
                     component = VFSFile(fileName, parentDirectory: currentDirectory)
                     (component as! VFSFile).pullData()
                 }
-                try? currentDirectory.appendComponent(component)
+                try? currentDirectory.appendComponent(component.pack())
             }
         }
-        
-    
     }
 }
 

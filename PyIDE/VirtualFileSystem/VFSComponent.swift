@@ -7,6 +7,19 @@
 
 import Foundation
 
+struct VFSContainer: Hashable, Identifiable {
+    var id: ObjectIdentifier
+    var component: VFSComponent
+    
+    init(component: VFSComponent) {
+        self.id = component.id
+        self.component = component
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(component.hashValue)
+    }
+}
 
 class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableObject {
     var description: String { name }
@@ -17,7 +30,7 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
             url = url.appendingPathComponent(newValue)
         }
     }
-    @Published var storedComponents: Array<VFSComponent>?
+    @Published var storedComponents: Array<VFSContainer>?
     private(set) var url: URL
     private(set) var parentDirectory: VFSDirectory?
 
@@ -46,6 +59,14 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
     func kill() {
         let manager = FileManager.default
         try! manager.removeItem(at: url)
+        guard let directory = parentDirectory else {
+            return
+        }
+        try! directory.removeComponent(self.pack())
+    }
+    
+    func pack() -> VFSContainer {
+        VFSContainer(component: self)
     }
 }
 
@@ -105,26 +126,27 @@ class VFSDirectory: VFSComponent {
         }
     }
     
-    func appendComponent(_ component: VFSComponent) throws {
+    func appendComponent(_ component: VFSContainer) throws {
         guard let _ = storedComponents else {
             throw VFSError.failedCreateVFSComponent("Хранимые свойства не инициализированы")
         }
-        if storedComponents!.contains(component) {
+        if storedComponents!.contains(where: { $0.component.name == component.component.name}) {
             throw VFSError.failedCreateVFSComponent("Нельзя добавить компонент, если он уже находиться в хранимых компонентов")
         }
         storedComponents!.append(component)
 
     }
     
-    func removeComponent(_ component: VFSComponent) throws {
+    func removeComponent(_ component: VFSContainer) throws {
         guard let _ = storedComponents else {
             throw VFSError.failedRemoveVFSComponent("Хранимые свойства не инициализированы")
         }
-        let index = storedComponents?.firstIndex(of: component)
+        let index = storedComponents?.firstIndex(where: { $0.component.name == component.component.name })
         guard let _ = index else {
             throw VFSError.failedRemoveVFSComponent("Не удалось найти элемент в хранимых компонентов")
         }
         storedComponents!.remove(at: index!)
+        
     }
     
 }

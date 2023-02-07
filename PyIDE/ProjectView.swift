@@ -9,29 +9,24 @@ import SwiftUI
 
 struct ProjectView: View {
     @StateObject var project: Project
+    @State private var selectedVFSContainer: VFSContainer?
     
     var body: some View {
         NavigationSplitView {
-            VirtualFileSystemView(virtualFileSystem: project.virtualFileSystem!)
-                .toolbar {
-                    Button {
-                        let directory = project.virtualFileSystem?.rootDirectory
-                        let filename = "test.py"
-                        try? directory?.appendComponent(VFSFile(filename, parentDirectory: directory!))
-                        project.virtualFileSystem?.updateStoredComponents()
-                    } label: {
-                        Image(systemName: "doc.fill.badge.plus")
-                    }
-                }
+            VirtualFileSystemView(virtualFileSystem: project.virtualFileSystem!, selectedVFSContainer: $selectedVFSContainer)
         } detail: {
-            CodeEditor(virtualFileSystem: project.virtualFileSystem!)
-        }.toolbar {
-            Button {
-                print("trestjsdos")
-            } label: {
-                Image(systemName: "arrowtriangle.forward.fill")
+            let _ = print(selectedVFSContainer)
+            if selectedVFSContainer != nil {
+                CodeEditor(container: $selectedVFSContainer)
+                    .toolbar {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "arrowtriangle.forward.fill")
+                        }
+                    }
             }
-        }.environmentObject(self.project.virtualFileSystem!)
+        }
     }
 }
 

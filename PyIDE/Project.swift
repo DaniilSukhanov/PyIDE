@@ -14,7 +14,7 @@ class Project: ObservableObject, Identifiable, Hashable {
     }
     
     @Published var name: String
-    var virtualFileSystem: VirtualFileSystem?
+    @Published var virtualFileSystem: VirtualFileSystem?
     
     init(name: String) throws {
         self.name = name
