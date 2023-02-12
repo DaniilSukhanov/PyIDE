@@ -24,6 +24,7 @@
 		E4EBEE5329392E3100664DBB /* ProjectSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE5229392E3100664DBB /* ProjectSelectionView.swift */; };
 		E4EBEE5C293931BA00664DBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4EBEE5E293931BA00664DBB /* Localizable.strings */; };
 		E4EBEE612939325500664DBB /* ProjectCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE602939325500664DBB /* ProjectCreatingView.swift */; };
+		E4FF6D052999564E0095A02D /* Python-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = E4FF6D042999564E0095A02D /* Python-iOS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4FF6D052999564E0095A02D /* Python-iOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +133,9 @@
 			dependencies = (
 			);
 			name = PyIDE;
+			packageProductDependencies = (
+				E4FF6D042999564E0095A02D /* Python-iOS */,
+			);
 			productName = PyIDE;
 			productReference = E4ABB7A5291EA78B00AE1E1D /* PyIDE.app */;
 			productType = "com.apple.product-type.application";
@@ -160,6 +165,9 @@
 				ru,
 			);
 			mainGroup = E4ABB79C291EA78A00AE1E1D;
+			packageReferences = (
+				E4FF6D032999564E0095A02D /* XCRemoteSwiftPackageReference "Python-iOS" */,
+			);
 			productRefGroup = E4ABB7A6291EA78B00AE1E1D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -423,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E4FF6D032999564E0095A02D /* XCRemoteSwiftPackageReference "Python-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kewlbear/Python-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.59932;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4FF6D042999564E0095A02D /* Python-iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4FF6D032999564E0095A02D /* XCRemoteSwiftPackageReference "Python-iOS" */;
+			productName = "Python-iOS";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E4ABB79D291EA78A00AE1E1D /* Project object */;
 }
