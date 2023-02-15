@@ -8,13 +8,29 @@
 import SwiftUI
 
 struct TerminalView: View {
+    @State private var textTerminal = ""
+    @State private var textInput = ""
+    @ObservedObject var virtualFileSystem: VirtualFileSystem
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(textTerminal)
+            TextField("input", text: $textInput)
+            Button("Reset") {
+                update()
+            }
+
+        }.padding()
+        
+    }
+    
+    func update() {
+        try! textTerminal = String(contentsOf: virtualFileSystem.urlFileTerminal)
     }
 }
 
 struct TerminalView_Previews: PreviewProvider {
     static var previews: some View {
-        TerminalView()
+        Text("")
     }
 }

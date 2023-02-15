@@ -10,15 +10,23 @@ import Foundation
 class VirtualFileSystem: ObservableObject {
     private(set) var project: Project
     @Published var rootDirectory: VFSDirectory
+    var urlFileTerminal: URL
 
     init(project: Project) throws {
         self.project = project
-        let manage = FileManager.default
-        guard let url = manage.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        let manager = FileManager.default
+        guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             throw VFSError.pathNotFound("Путь не найден")
         }
         print(url.path)
-        rootDirectory = VFSDirectory(project.name, url: url)
+        let urlProjects = url.appendingPathComponent("PyIDEProjects")
+        try? manager.createDirectory(at: urlProjects, withIntermediateDirectories: false)
+        rootDirectory = VFSDirectory(project.name, url: urlProjects)
+        let urlTerminal = url.appendingPathComponent("terminal.txt")
+        if !manager.fileExists(atPath: urlTerminal.path()) {
+            manager.createFile(atPath: urlTerminal.path(), contents: .none)
+        }
+        urlFileTerminal = urlTerminal
         updateStoredComponents()
     }
     
