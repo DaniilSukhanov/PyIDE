@@ -23,11 +23,11 @@ struct ProjectView: View {
                         Button {
                             let file = (selectedVFSContainer!.component as! VFSFile)
                             let str = """
-import sys
-sys.path.append('\(file.url.deletingLastPathComponent().path())')
-with open('\(project.virtualFileSystem!.urlFileTerminal.path())', 'w') as sys.stdout:
-    \(file.data!)
-"""
+                            import sys
+                            sys.path.append('\(file.url.deletingLastPathComponent().path())')
+                            with open('\(project.virtualFileSystem!.urlFileTerminal.path())', 'w') as sys.stdout:
+                                \(file.data!)
+                            """
                             initialize()
                             runSimpleString(str)
                             finalize()
