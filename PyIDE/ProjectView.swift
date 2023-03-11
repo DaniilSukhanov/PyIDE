@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import PythonSupport
 
 struct ProjectView: View {
     @StateObject var project: Project
@@ -18,33 +17,26 @@ struct ProjectView: View {
             VirtualFileSystemView(virtualFileSystem: project.virtualFileSystem!, selectedVFSContainer: $selectedVFSContainer)
         } detail: {
             if selectedVFSContainer != nil {
-                CodeEditor(container: $selectedVFSContainer)
-                    .toolbar {
-                        Button {
-                            let file = (selectedVFSContainer!.component as! VFSFile)
-                            let str = """
-                            import sys
-                            sys.path.append('\(file.url.deletingLastPathComponent().path())')
-                            with open('\(project.virtualFileSystem!.urlFileTerminal.path())', 'w') as sys.stdout:
-                                \(file.data!)
-                            """
-                            initialize()
-                            runSimpleString(str)
-                            finalize()
-                        } label: {
-                            Image(systemName: "arrowtriangle.forward.fill")
-                        }
+                let codeEditor = CodeEditor(container: $selectedVFSContainer)
+                codeEditor.toolbar {
+                    Button {
+                        let file = (selectedVFSContainer!.component as! VFSFile)
+                        codeEditor.pushDataCurrentFile()
+                        runPythonFile(url: file.url, urlFileTerminal: project.virtualFileSystem!.urlFileTerminal)
+                    } label: {
+                        Image(systemName: "arrowtriangle.forward.fill")
                     }
-                    .toolbar {
-                        Button {
-                            isShowingSheet.toggle()
-                        } label: {
-                             Image(systemName: "terminal")
-                        }
+                }
+                .toolbar {
+                    Button {
+                        isShowingSheet.toggle()
+                    } label: {
+                        Image(systemName: "terminal")
                     }
-                    .sheet(isPresented: $isShowingSheet) {
-                        TerminalView(virtualFileSystem: project.virtualFileSystem!)
-                    }
+                }
+                .sheet(isPresented: $isShowingSheet) {
+                    TerminalView(virtualFileSystem: project.virtualFileSystem!)
+                }
             }
         }
     }

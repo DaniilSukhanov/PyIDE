@@ -32,12 +32,20 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
     }
     @Published var storedComponents: Array<VFSContainer>?
     private(set) var url: URL
+    var urlJSONAST: URL {
+        var array = url.pathComponents
+        let index = Int(array.firstIndex(of: "PyIDEProjects")!)
+        array.replaceSubrange(index...index, with: ["PyIDEASTProjects"])
+        if array[array.endIndex - 1].contains(".py") {
+            array[array.endIndex - 1] = array[array.endIndex - 1].replacing(".py", with: ".json")
+        }
+        return URL(filePath: array.joined(separator: "/"))
+    }
     private(set) var parentDirectory: VFSDirectory?
 
     required init(_ name: String, parentDirectory: VFSDirectory) {
         self.parentDirectory = parentDirectory
         self.url = parentDirectory.url.appendingPathComponent(name)
-        
     }
     
     required init(_ name: String, url: URL) {
@@ -85,18 +93,28 @@ class VFSFile: VFSComponent {
     
     private func create() throws {
         let manager = FileManager()
-        if manager.fileExists(atPath: url.path()) {
-            return
+        if !manager.fileExists(atPath: url.path()) {
+            if !manager.createFile(atPath: url.path(), contents: nil) {
+                throw VFSError.failedCreateVFSComponent("Невозможно создать файл")
+            }
         }
-        if !manager.createFile(atPath: url.path(), contents: nil) {
-            throw VFSError.failedCreateVFSComponent("Невозможно создать файл")
+        if !manager.fileExists(atPath: urlJSONAST.path()) {
+            if !manager.createFile(atPath: urlJSONAST.path(), contents: nil) {
+                throw VFSError.failedCreateVFSComponent("Невозможно создать файл JSON")
+            }
         }
     }
     
+    /**
+     Загружает в компонент данные из физического файла
+     */
     func pullData() {
         data = try! String(contentsOf: url)
     }
     
+    /**
+     Записывает в физический файл данные
+     */
     func pushData(_ data: String) {
         try! data.write(to: url, atomically: false, encoding: .utf8)
     }
@@ -121,6 +139,13 @@ class VFSDirectory: VFSComponent {
             try manager.createDirectory(at: url, withIntermediateDirectories: false)
         } catch {
             if !manager.fileExists(atPath: url.path()) {
+                throw VFSError.failedCreateVFSComponent(error.localizedDescription)
+            }
+        }
+        do {
+            try manager.createDirectory(at: urlJSONAST, withIntermediateDirectories: false)
+        } catch {
+            if !manager.fileExists(atPath: urlJSONAST.path()) {
                 throw VFSError.failedCreateVFSComponent(error.localizedDescription)
             }
         }

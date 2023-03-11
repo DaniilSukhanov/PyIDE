@@ -11,6 +11,7 @@ class VirtualFileSystem: ObservableObject {
     private(set) var project: Project
     @Published var rootDirectory: VFSDirectory
     var urlFileTerminal: URL
+    var urlFilesASTProject: URL
 
     init(project: Project) throws {
         self.project = project
@@ -18,8 +19,10 @@ class VirtualFileSystem: ObservableObject {
         guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             throw VFSError.pathNotFound("Путь не найден")
         }
-        print(url.path)
+        print(url)
+        urlFilesASTProject = url.appendingPathComponent("PyIDEASTProjects").appendingPathComponent(project.name)
         let urlProjects = url.appendingPathComponent("PyIDEProjects")
+        try? manager.createDirectory(at: self.urlFilesASTProject, withIntermediateDirectories: true)
         try? manager.createDirectory(at: urlProjects, withIntermediateDirectories: false)
         rootDirectory = VFSDirectory(project.name, url: urlProjects)
         let urlTerminal = url.appendingPathComponent("terminal.txt")
@@ -39,7 +42,7 @@ class VirtualFileSystem: ObservableObject {
             }
             fileNames = try! manager.contentsOfDirectory(atPath: currentDirectory.url.path())
             for fileName in fileNames {
-                if fileName == ".DS_Store" {
+                if fileName == ".DS_Store" || fileName == "__pycache__" {
                     continue
                 }
                 url = currentDirectory.url.appendingPathComponent(fileName)

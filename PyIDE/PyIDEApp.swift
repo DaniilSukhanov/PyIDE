@@ -13,6 +13,12 @@ struct PyIDEApp: App {
     @StateObject private var listViews = ListViews()
     @State private var projects = [Project]()
     
+    init() {
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        settingsPython(urlLib: url)
+    }
+    
     var body: some Scene {
         WindowGroup {
             OptionsView()
