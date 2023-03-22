@@ -34,9 +34,16 @@ struct ProjectView: View {
                         Image(systemName: "terminal")
                     }
                 }
+                .toolbar {
+                    Button("Analyze") {
+                        let file = (selectedVFSContainer!.component as! VFSFile)
+                        analysePythonCode(file: file)
+                    }
+                }
                 .sheet(isPresented: $isShowingSheet) {
                     TerminalView(virtualFileSystem: project.virtualFileSystem!)
                 }
+                
             }
         }
     }

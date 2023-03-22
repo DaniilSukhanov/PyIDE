@@ -28,6 +28,38 @@ func runPythonFile(url: URL, urlFileTerminal: URL) {
     PyRun_SimpleString(code)
 }
 
-func analysePythonCode(urlFile: URL, urlJSONFile: URL) {
-    
+func analysePythonCode(file: VFSFile) {
+    let code = """
+    import ast
+    import json
+
+
+    def get_dict_by_obj(obj):
+        res = {}
+        type_element = type(obj)
+        res["type"] = type_element.__name__
+        for attr in obj.__dict__.keys():
+            if attr not in object.__dict__:
+                value = getattr(obj, attr)
+                if type(value) is list:
+                    res[attr] = list(map(get_dict_by_obj, value))
+                elif isinstance(value, ast.AST):
+                    res[attr] = get_dict_by_obj(value)
+                else:
+                    res[attr] = value
+        return res
+
+
+    def main():
+        with open("\(file.url.path())") as f:
+            data = f.read()
+        tree = ast.parse(data)
+        result = get_dict_by_obj(tree)
+        with open("\(file.urlJSONAST.path())", "w") as f:
+            json.dump(result, f, indent=4)
+
+
+    main()
+    """
+    PyRun_SimpleString(code)
 }

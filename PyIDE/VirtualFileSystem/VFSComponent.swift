@@ -118,6 +118,16 @@ class VFSFile: VFSComponent {
     func pushData(_ data: String) {
         try! data.write(to: url, atomically: false, encoding: .utf8)
     }
+    
+    /**
+     Получение данных о коде
+     */
+    func getJSONData() -> ASTComponent {
+        let decoder = JSONDecoder()
+        let data = try! Data(contentsOf: urlJSONAST)
+        let result = try! decoder.decode(ASTComponent.self, from: data)
+        return result
+    }
 }
 
 class VFSDirectory: VFSComponent {
