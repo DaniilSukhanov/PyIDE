@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct ASTComponent: Decodable {
@@ -15,4 +16,17 @@ struct ASTComponent: Decodable {
     let end_lineno: Int?
     let end_col_offset: Int?
     let body: [ASTComponent]?
+    
+    func color() -> UIColor? {
+        var color: UIColor?
+        switch type {
+        case "Import":
+            color = UIColor.orange
+        case "FunctionDef":
+            color = UIColor.orange
+        default:
+            break
+        }
+        return color
+    }
 }
