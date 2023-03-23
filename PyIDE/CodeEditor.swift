@@ -32,6 +32,9 @@ struct CodeEditor: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
         uiTextView.text = (container!.component as! VFSFile).data!
+        updateHighlightingCode()
+        uiTextView.delegate = context.coordinator
+        uiTextView.font = .systemFont(ofSize: 24)
     }
     
     func makeUIView(context: Context) -> some UIView {
@@ -39,18 +42,18 @@ struct CodeEditor: UIViewRepresentable {
         if file != nil {
             uiTextView.text = file!.data
         }
-        // updateHighlightingCode()
+        updateHighlightingCode()
         uiTextView.delegate = context.coordinator
         uiTextView.font = .systemFont(ofSize: 24)
         return uiTextView
     }
 
-    func updateHighlightingCode() { // TODO: не работает.
+    func updateHighlightingCode() {
         let file = container?.component as! VFSFile
         var stack = [file.getJSONData()], component: ASTComponent
         var code = file.data! as NSString
         var mutableString = NSMutableAttributedString(string: file.data!)
-        mutableString.addAttribute(.foregroundColor, value: UIColor.red, range: code.range(of: "def"))
+        mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: code.range(of: "def"))
         while !stack.isEmpty {
             component = stack.popLast()!
             guard let body = component.body else {
