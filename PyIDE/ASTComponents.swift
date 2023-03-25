@@ -16,6 +16,7 @@ struct ASTComponent: Decodable {
     let end_lineno: Int?
     let end_col_offset: Int?
     let body: [ASTComponent]?
+    let orelse: [ASTComponent]?
     
     func color() -> UIColor? {
         var color: UIColor?

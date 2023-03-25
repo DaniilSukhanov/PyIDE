@@ -30,6 +30,7 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
             url = url.appendingPathComponent(newValue)
         }
     }
+    
     @Published var storedComponents: Array<VFSContainer>?
     private(set) var url: URL
     var urlJSONAST: URL {
