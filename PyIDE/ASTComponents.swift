@@ -29,6 +29,8 @@ struct ASTComponent: Decodable {
             color = UIColor.orange
         case "While":
             color = UIColor.orange
+        case "If":
+            color = UIColor.orange
             
         default:
             break
