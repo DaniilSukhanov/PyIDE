@@ -35,6 +35,8 @@ struct ASTComponent: Decodable {
             color = UIColor.orange
         case "AsyncFunctionDef":
             color = UIColor.orange
+        case "ImportFrom":
+            color = UIColor.orange
             
         default:
             break
