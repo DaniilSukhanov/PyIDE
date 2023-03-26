@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+ 
 class VirtualFileSystem: ObservableObject {
     private(set) var project: Project
     @Published var rootDirectory: VFSDirectory
