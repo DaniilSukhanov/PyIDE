@@ -37,7 +37,8 @@ struct ASTComponent: Decodable {
             color = UIColor.orange
         case "ImportFrom":
             color = UIColor.orange
-            
+        case "With":
+            color = UIColor.orange
         default:
             break
         }
