@@ -43,7 +43,6 @@ struct ProjectView: View {
                 .sheet(isPresented: $isShowingSheet) {
                     TerminalView(virtualFileSystem: project.virtualFileSystem!)
                 }
-                
             }
         }
     }

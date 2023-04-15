@@ -21,26 +21,10 @@ struct ASTComponent: Decodable {
     func color() -> UIColor? {
         var color: UIColor?
         switch type {
-        case "Import":
-            color = UIColor.orange
-        case "FunctionDef":
-            color = UIColor.orange
-        case "For":
-            color = UIColor.orange
-        case "While":
-            color = UIColor.orange
-        case "If":
-            color = UIColor.orange
-        case "Return":
-            color = UIColor.orange
-        case "AsyncFunctionDef":
-            color = UIColor.orange
-        case "ImportFrom":
-            color = UIColor.orange
-        case "With":
+        case "Import", "FunctionDef", "For", "While", "If", "Return", "AsyncFunctionDef", "ImportFrom", "With":
             color = UIColor.orange
         default:
-            break
+            return nil
         }
         return color
     }

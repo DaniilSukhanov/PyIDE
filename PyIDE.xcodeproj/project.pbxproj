@@ -11,44 +11,32 @@
 		E432B1222965A6D4008CE2DC /* VirtualFileSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432B1212965A6D4008CE2DC /* VirtualFileSystemView.swift */; };
 		E432B13F2969F5DB008CE2DC /* VFSComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432B13E2969F5DB008CE2DC /* VFSComponent.swift */; };
 		E43B541F295F773F00A0516E /* ListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B541E295F773F00A0516E /* ListViews.swift */; };
+		E47D33D129E4232500D0C3C4 /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47D33D029E4232500D0C3C4 /* Python.xcframework */; };
 		E48316E329562487008ED43A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E48316E229562487008ED43A /* Settings.bundle */; };
 		E48316EB29578D67008ED43A /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48316EA29578D67008ED43A /* ProjectView.swift */; };
 		E48316EF29578E31008ED43A /* VirtualFileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48316EE29578E31008ED43A /* VirtualFileSystem.swift */; };
 		E48316F329578F89008ED43A /* CodeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48316F229578F89008ED43A /* CodeEditor.swift */; };
 		E48316F529578FB0008ED43A /* TerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48316F429578FB0008ED43A /* TerminalView.swift */; };
 		E48E28512943C440005CFDAE /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E28502943C440005CFDAE /* Project.swift */; };
+		E49BAAB529EAE25B00EE55D8 /* python-stdlib in Resources */ = {isa = PBXBuildFile; fileRef = E4CF91CC29E9AB2E0070B95D /* python-stdlib */; };
 		E4ABB7A9291EA78B00AE1E1D /* PyIDEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABB7A8291EA78B00AE1E1D /* PyIDEApp.swift */; };
 		E4ABB7AD291EA78C00AE1E1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4ABB7AC291EA78C00AE1E1D /* Assets.xcassets */; };
 		E4ABB7B0291EA78C00AE1E1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4ABB7AF291EA78C00AE1E1D /* Preview Assets.xcassets */; };
 		E4B0B82B29CA510600588DB2 /* ASTComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B0B82A29CA510600588DB2 /* ASTComponents.swift */; };
+		E4C2B0F129E86E67002BBF10 /* String+FindWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2B0F029E86E67002BBF10 /* String+FindWords.swift */; };
 		E4EBEE5129392D1000664DBB /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE5029392D1000664DBB /* OptionsView.swift */; };
 		E4EBEE5329392E3100664DBB /* ProjectSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE5229392E3100664DBB /* ProjectSelectionView.swift */; };
 		E4EBEE5C293931BA00664DBB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4EBEE5E293931BA00664DBB /* Localizable.strings */; };
 		E4EBEE612939325500664DBB /* ProjectCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE602939325500664DBB /* ProjectCreatingView.swift */; };
-		E4F714D729B3D7BC006C58B5 /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F714D629B3D7BC006C58B5 /* Python.xcframework */; };
-		E4F714D829B3D7BC006C58B5 /* Python.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E4F714D629B3D7BC006C58B5 /* Python.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E4F714DB29B3D891006C58B5 /* Python.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F714DA29B3D891006C58B5 /* Python.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E4F714D929B3D7BC006C58B5 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E4F714D829B3D7BC006C58B5 /* Python.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E42C56B32990395C00827C0B /* CreatingFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingFileView.swift; sourceTree = "<group>"; };
 		E432B1212965A6D4008CE2DC /* VirtualFileSystemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualFileSystemView.swift; sourceTree = "<group>"; };
 		E432B13E2969F5DB008CE2DC /* VFSComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFSComponent.swift; sourceTree = "<group>"; };
 		E43B541E295F773F00A0516E /* ListViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViews.swift; sourceTree = "<group>"; };
+		E47D33D029E4232500D0C3C4 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Python.xcframework; sourceTree = "<group>"; };
 		E48316E229562487008ED43A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E48316EA29578D67008ED43A /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		E48316EE29578E31008ED43A /* VirtualFileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualFileSystem.swift; sourceTree = "<group>"; };
@@ -60,6 +48,8 @@
 		E4ABB7AC291EA78C00AE1E1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4ABB7AF291EA78C00AE1E1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E4B0B82A29CA510600588DB2 /* ASTComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTComponents.swift; sourceTree = "<group>"; };
+		E4C2B0F029E86E67002BBF10 /* String+FindWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FindWords.swift"; sourceTree = "<group>"; };
+		E4CF91CC29E9AB2E0070B95D /* python-stdlib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "python-stdlib"; sourceTree = "<group>"; };
 		E4D7FDCA29B8C5D500200D35 /* PyIDE.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = PyIDE.entitlements; sourceTree = "<group>"; };
 		E4D7FDCB29B8C5E300200D35 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4EBEE5029392D1000664DBB /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
@@ -67,7 +57,6 @@
 		E4EBEE5D293931BA00664DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4EBEE5F293931BF00664DBB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4EBEE602939325500664DBB /* ProjectCreatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreatingView.swift; sourceTree = "<group>"; };
-		E4F714D629B3D7BC006C58B5 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Python.xcframework; path = "../../Desktop/PythonRunTestFramework/Python-3.9-iOS-support.b8/Python.xcframework"; sourceTree = "<group>"; };
 		E4F714DA29B3D891006C58B5 /* Python.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Python.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4F714D729B3D7BC006C58B5 /* Python.xcframework in Frameworks */,
+				E47D33D129E4232500D0C3C4 /* Python.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +102,7 @@
 		E4ABB7A7291EA78B00AE1E1D /* PyIDE */ = {
 			isa = PBXGroup;
 			children = (
+				E4CF91CC29E9AB2E0070B95D /* python-stdlib */,
 				E4D7FDCB29B8C5E300200D35 /* Info.plist */,
 				E4D7FDCA29B8C5D500200D35 /* PyIDE.entitlements */,
 				E432B1232965AE48008CE2DC /* VirtualFileSystem */,
@@ -132,6 +122,7 @@
 				E42C56B32990395C00827C0B /* CreatingFileView.swift */,
 				E4F714DA29B3D891006C58B5 /* Python.swift */,
 				E4B0B82A29CA510600588DB2 /* ASTComponents.swift */,
+				E4C2B0F029E86E67002BBF10 /* String+FindWords.swift */,
 			);
 			path = PyIDE;
 			sourceTree = "<group>";
@@ -147,7 +138,7 @@
 		E4F714D529B3D7BB006C58B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E4F714D629B3D7BC006C58B5 /* Python.xcframework */,
+				E47D33D029E4232500D0C3C4 /* Python.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,7 +153,6 @@
 				E4ABB7A1291EA78A00AE1E1D /* Sources */,
 				E4ABB7A2291EA78A00AE1E1D /* Frameworks */,
 				E4ABB7A3291EA78A00AE1E1D /* Resources */,
-				E4F714D929B3D7BC006C58B5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -217,9 +207,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48316E329562487008ED43A /* Settings.bundle in Resources */,
-				E4ABB7B0291EA78C00AE1E1D /* Preview Assets.xcassets in Resources */,
 				E4EBEE5C293931BA00664DBB /* Localizable.strings in Resources */,
+				E4ABB7B0291EA78C00AE1E1D /* Preview Assets.xcassets in Resources */,
 				E4ABB7AD291EA78C00AE1E1D /* Assets.xcassets in Resources */,
+				E49BAAB529EAE25B00EE55D8 /* python-stdlib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +224,7 @@
 				E48316F529578FB0008ED43A /* TerminalView.swift in Sources */,
 				E48316F329578F89008ED43A /* CodeEditor.swift in Sources */,
 				E43B541F295F773F00A0516E /* ListViews.swift in Sources */,
+				E4C2B0F129E86E67002BBF10 /* String+FindWords.swift in Sources */,
 				E4EBEE5129392D1000664DBB /* OptionsView.swift in Sources */,
 				E4ABB7A9291EA78B00AE1E1D /* PyIDEApp.swift in Sources */,
 				E4EBEE5329392E3100664DBB /* ProjectSelectionView.swift in Sources */,
@@ -322,6 +314,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -384,6 +377,7 @@
 		E4ABB7B4291EA78C00AE1E1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLY_RULES_IN_COPY_FILES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PyIDE/PyIDE.entitlements;
@@ -416,6 +410,7 @@
 		E4ABB7B5291EA78C00AE1E1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLY_RULES_IN_COPY_FILES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PyIDE/PyIDE.entitlements;

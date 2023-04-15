@@ -7,17 +7,23 @@
 
 import Foundation
 import Python
+import OSLog
 
 
 func settingsPython(urlLib: URL) {
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-settings")
+    logger.info("Настройка переменной среды")
     let stdLibPath = urlLib.appending(component: "python-stdlib")
     let libDynloadPath = stdLibPath.appending(component: "lib-dynload")
     setenv("PYTHONHOME", stdLibPath.path(), 1)
+    logger.debug("Установка PYTHONHOME: \(stdLibPath.path())")
     setenv("PYTHONPATH", "\(stdLibPath.path()):\(libDynloadPath.path())", 1)
+    logger.debug("Установка PYTHONHOME: \(stdLibPath.path()):\(libDynloadPath.path())")
     Py_Initialize()
 }
 
 func runPythonFile(url: URL, urlFileTerminal: URL) {
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-run_file")
     let code = """
     import sys
     import os
@@ -25,10 +31,12 @@ func runPythonFile(url: URL, urlFileTerminal: URL) {
     with open('\(urlFileTerminal.path())', 'w') as sys.stdout:
         import \(url.lastPathComponent.components(separatedBy: ".")[0])
     """
+    logger.info("Запуск python-файла \(url.lastPathComponent)")
     PyRun_SimpleString(code)
 }
 
 func analysePythonCode(file: VFSFile) {
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-ast")
     let code = """
     import ast
     import json
@@ -61,5 +69,6 @@ func analysePythonCode(file: VFSFile) {
 
     main()
     """
+    logger.info("Посторение AST в \(file.urlJSONAST) для \(file.url)")
     PyRun_SimpleString(code)
 }

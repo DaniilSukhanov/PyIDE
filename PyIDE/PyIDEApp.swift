@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OSLog
 
 
 @main
@@ -14,8 +15,16 @@ struct PyIDEApp: App {
     @State private var projects = [Project]()
     
     init() {
+        let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "pre-start")
         let manager = FileManager.default
         let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        var urlApp = Bundle.main.bundleURL
+        urlApp.append(component: "python-stdlib")
+        if (try? manager.copyItem(atPath: urlApp.path(), toPath: url.path() + "/python-stdlib")) != nil {
+            logger.info("python-stdlib была скопираванна в \(url)")
+        } else {
+            logger.error("python-stdlib была не скопираванна в \(url)")
+        }
         settingsPython(urlLib: url)
     }
     

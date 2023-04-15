@@ -53,6 +53,7 @@ struct VirtualFileSystemView: View {
             } label: {
                 Image(systemName: "doc.fill.badge.plus")
             }
+            .keyboardShortcut("N", modifiers: .command)
         }.sheet(isPresented: $isShowingSheet) {
             CreatingFileView(currentContainer: $selectedDirectory, virtualFileSystem: virtualFileSystem)
         }.toolbar {

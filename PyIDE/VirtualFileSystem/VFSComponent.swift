@@ -86,6 +86,7 @@ class VFSFile: VFSComponent {
         super.init(name, parentDirectory: parentDirectory)
         try! create()
         pullData()
+        analysePythonCode(file: self)
     }
     
     required init(_ name: String, url: URL) {
@@ -126,6 +127,7 @@ class VFSFile: VFSComponent {
     func getJSONData() -> ASTComponent {
         let decoder = JSONDecoder()
         let data = try! Data(contentsOf: urlJSONAST)
+        print(data)
         let result = try! decoder.decode(ASTComponent.self, from: data)
         return result
     }
