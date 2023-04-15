@@ -85,6 +85,7 @@
 		E4ABB79C291EA78A00AE1E1D = {
 			isa = PBXGroup;
 			children = (
+				E4CF91CC29E9AB2E0070B95D /* python-stdlib */,
 				E4ABB7A7291EA78B00AE1E1D /* PyIDE */,
 				E4ABB7A6291EA78B00AE1E1D /* Products */,
 				E4F714D529B3D7BB006C58B5 /* Frameworks */,
@@ -102,7 +103,6 @@
 		E4ABB7A7291EA78B00AE1E1D /* PyIDE */ = {
 			isa = PBXGroup;
 			children = (
-				E4CF91CC29E9AB2E0070B95D /* python-stdlib */,
 				E4D7FDCB29B8C5E300200D35 /* Info.plist */,
 				E4D7FDCA29B8C5D500200D35 /* PyIDE.entitlements */,
 				E432B1232965AE48008CE2DC /* VirtualFileSystem */,
