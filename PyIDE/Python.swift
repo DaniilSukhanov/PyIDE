@@ -18,7 +18,6 @@ func settingsPython(urlLib: URL) {
     logger.debug("Установка PYTHONHOME: \(stdLibPath.path())")
     setenv("PYTHONPATH", "\(stdLibPath.path()):\(libDynloadPath.path())", 1)
     logger.debug("Установка PYTHONHOME: \(stdLibPath.path()):\(libDynloadPath.path())")
-    Py_Initialize()
 }
 
 func runPythonFile(url: URL, urlFileTerminal: URL) {
@@ -45,10 +44,12 @@ func runPythonFile(url: URL, urlFileTerminal: URL) {
     }
     
     DispatchQueue.global().async {
+        Py_Initialize()
         let uuid = UUID()
         logger.info("(\(uuid)) Запуск python-файла \(url.lastPathComponent)")
         PyRun_SimpleString(code)
         logger.info("(\(uuid)) Конец выполнения python-файла \(url.lastPathComponent)")
+        Py_Finalize()
     }
 }
 
@@ -87,5 +88,7 @@ func analysePythonCode(file: VFSFile) {
     main()
     """
     logger.info("Посторение AST в \(file.urlJSONAST) для \(file.url)")
+    Py_Initialize()
     PyRun_SimpleString(code)
+    Py_Finalize()
 }
