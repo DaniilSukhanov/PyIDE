@@ -8,24 +8,22 @@
 import SwiftUI
 
 struct TerminalView: View {
-    @State private var textTerminal = ""
     @State private var textInput = ""
     @ObservedObject var virtualFileSystem: VirtualFileSystem
+    @ObservedObject var terminal: Terminal
+    
+    init (virtualFileSystem: VirtualFileSystem) {
+        self.virtualFileSystem = virtualFileSystem
+        terminal = Terminal(url: virtualFileSystem.urlFileTerminal)
+        terminal.initTimer()
+    }
     
     var body: some View {
         VStack {
-            Text(textTerminal)
+            Text(terminal.text)
             TextField("input", text: $textInput)
-            Button("Reset") {
-                update()
-            }
 
         }.padding()
-        
-    }
-    
-    func update() {
-        try! textTerminal = String(contentsOf: virtualFileSystem.urlFileTerminal)
     }
 }
 

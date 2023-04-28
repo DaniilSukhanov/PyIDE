@@ -31,7 +31,7 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
         }
     }
     
-    @Published var storedComponents: Array<VFSContainer>?
+    @Published var storedComponents: [VFSContainer]?
     private(set) var url: URL
     var urlJSONAST: URL {
         var array = url.pathComponents
@@ -42,6 +42,7 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
         }
         return URL(filePath: array.joined(separator: "/"))
     }
+
     private(set) var parentDirectory: VFSDirectory?
 
     required init(_ name: String, parentDirectory: VFSDirectory) {
@@ -54,7 +55,7 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
     }
     
     fileprivate func initStoreComponents() {
-        self.storedComponents = .init()
+        storedComponents = .init()
     }
     
     static func == (lhs: VFSComponent, rhs: VFSComponent) -> Bool {
@@ -62,7 +63,7 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self.name)
+        hasher.combine(name)
     }
     
     func kill() {
@@ -71,7 +72,7 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
         guard let directory = parentDirectory else {
             return
         }
-        try! directory.removeComponent(self.pack())
+        try! directory.removeComponent(pack())
     }
     
     func pack() -> VFSContainer {
@@ -168,11 +169,10 @@ class VFSDirectory: VFSComponent {
         guard let _ = storedComponents else {
             throw VFSError.failedCreateVFSComponent("Хранимые свойства не инициализированы")
         }
-        if storedComponents!.contains(where: { $0.component.name == component.component.name}) {
+        if storedComponents!.contains(where: { $0.component.name == component.component.name }) {
             throw VFSError.failedCreateVFSComponent("Нельзя добавить компонент, если он уже находиться в хранимых компонентов")
         }
         storedComponents!.append(component)
-
     }
     
     func removeComponent(_ component: VFSContainer) throws {
@@ -184,9 +184,7 @@ class VFSDirectory: VFSComponent {
             throw VFSError.failedRemoveVFSComponent("Не удалось найти элемент в хранимых компонентов")
         }
         storedComponents!.remove(at: index!)
-        
     }
-    
 }
 
 enum VFSError: Error {

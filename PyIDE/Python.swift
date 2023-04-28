@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import Python
 import OSLog
-
+import Python
 
 func settingsPython(urlLib: URL) {
     let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-settings")
@@ -26,13 +25,31 @@ func runPythonFile(url: URL, urlFileTerminal: URL) {
     let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-run_file")
     let code = """
     import sys
-    import os
-    sys.path.append('\(url.deletingLastPathComponent().path())')
-    with open('\(urlFileTerminal.path())', 'w') as sys.stdout:
-        import \(url.lastPathComponent.components(separatedBy: ".")[0])
+    
+    if '\(url.deletingLastPathComponent().path())' not in sys.path:
+        sys.path.append('\(url.deletingLastPathComponent().path())')
+
+    filename = "\(urlFileTerminal.path())"
+
+    def write(msg):
+        with open(filename, "a") as file:
+            file.write(msg)
+
+
+    #sys.stdout.write = write
+    
+    import \(url.lastPathComponent.components(separatedBy: ".")[0])
     """
-    logger.info("Запуск python-файла \(url.lastPathComponent)")
-    PyRun_SimpleString(code)
+    defer {
+        
+    }
+    
+    DispatchQueue.global().async {
+        let uuid = UUID()
+        logger.info("(\(uuid)) Запуск python-файла \(url.lastPathComponent)")
+        PyRun_SimpleString(code)
+        logger.info("(\(uuid)) Конец выполнения python-файла \(url.lastPathComponent)")
+    }
 }
 
 func analysePythonCode(file: VFSFile) {

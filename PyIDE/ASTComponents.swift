@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 struct ASTComponent: Decodable {
     let type: String
     let lineno: Int?
@@ -17,7 +16,7 @@ struct ASTComponent: Decodable {
     let end_col_offset: Int?
     let body: [ASTComponent]?
     let orelse: [ASTComponent]?
-    
+
     func color() -> UIColor? {
         var color: UIColor?
         switch type {

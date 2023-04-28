@@ -10,11 +10,11 @@ import SwiftUI
 
 class ListViews: ObservableObject {
     @Published var data = NavigationPath()
-    
+
     func append(_ value: any Hashable) {
         data.append(value)
     }
-    
+
     func removeLast() {
         data.removeLast()
     }

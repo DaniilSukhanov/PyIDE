@@ -23,7 +23,6 @@ class Project: ObservableObject, Identifiable, Hashable {
         } catch {
             throw ProjectError.failedInitialize(error)
         }
-        
     }
     
     static func == (lhs: Project, rhs: Project) -> Bool {

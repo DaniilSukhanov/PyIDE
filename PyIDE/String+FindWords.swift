@@ -33,7 +33,6 @@ extension String {
                 continue
             }
             result[word]!.append(NSRange(location: startIndex, length: endIndex - startIndex + 1))
-            print(result)
         }
         return result
     }

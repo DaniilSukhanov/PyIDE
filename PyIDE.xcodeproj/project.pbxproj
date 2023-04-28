@@ -10,6 +10,7 @@
 		E42C56B42990395C00827C0B /* CreatingFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C56B32990395C00827C0B /* CreatingFileView.swift */; };
 		E432B1222965A6D4008CE2DC /* VirtualFileSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432B1212965A6D4008CE2DC /* VirtualFileSystemView.swift */; };
 		E432B13F2969F5DB008CE2DC /* VFSComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432B13E2969F5DB008CE2DC /* VFSComponent.swift */; };
+		E435206F29F08FB400F3EBEC /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E435206E29F08FB400F3EBEC /* Terminal.swift */; };
 		E43B541F295F773F00A0516E /* ListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B541E295F773F00A0516E /* ListViews.swift */; };
 		E47D33D129E4232500D0C3C4 /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47D33D029E4232500D0C3C4 /* Python.xcframework */; };
 		E48316E329562487008ED43A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E48316E229562487008ED43A /* Settings.bundle */; };
@@ -35,6 +36,7 @@
 		E42C56B32990395C00827C0B /* CreatingFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingFileView.swift; sourceTree = "<group>"; };
 		E432B1212965A6D4008CE2DC /* VirtualFileSystemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualFileSystemView.swift; sourceTree = "<group>"; };
 		E432B13E2969F5DB008CE2DC /* VFSComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFSComponent.swift; sourceTree = "<group>"; };
+		E435206E29F08FB400F3EBEC /* Terminal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 		E43B541E295F773F00A0516E /* ListViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViews.swift; sourceTree = "<group>"; };
 		E47D33D029E4232500D0C3C4 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Python.xcframework; sourceTree = "<group>"; };
 		E48316E229562487008ED43A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				E4F714DA29B3D891006C58B5 /* Python.swift */,
 				E4B0B82A29CA510600588DB2 /* ASTComponents.swift */,
 				E4C2B0F029E86E67002BBF10 /* String+FindWords.swift */,
+				E435206E29F08FB400F3EBEC /* Terminal.swift */,
 			);
 			path = PyIDE;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				E4ABB7A9291EA78B00AE1E1D /* PyIDEApp.swift in Sources */,
 				E4EBEE5329392E3100664DBB /* ProjectSelectionView.swift in Sources */,
 				E42C56B42990395C00827C0B /* CreatingFileView.swift in Sources */,
+				E435206F29F08FB400F3EBEC /* Terminal.swift in Sources */,
 				E4F714DB29B3D891006C58B5 /* Python.swift in Sources */,
 				E432B1222965A6D4008CE2DC /* VirtualFileSystemView.swift in Sources */,
 				E48316EB29578D67008ED43A /* ProjectView.swift in Sources */,
