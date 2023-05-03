@@ -17,7 +17,7 @@ struct OptionsView: View {
     @State private var text = ""
     @EnvironmentObject var listViews: ListViews
     @State private var selectedDetailView: DetailContentViews?
-    @State private var projects: [Project] = [try! Project(name: "123")]
+    @State private var projects = [Project]()
     
     var body: some View {
         NavigationStack(path: $listViews.data) {

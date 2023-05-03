@@ -18,38 +18,39 @@ struct ProjectView: View {
         } detail: {
             if selectedVFSContainer != nil {
                 let codeEditor = CodeEditor(container: $selectedVFSContainer)
-                codeEditor.toolbar {
-                    Button {
-                        let file = (selectedVFSContainer!.component as! VFSFile)
-                        codeEditor.pushDataCurrentFile()
-                        runPythonFile(url: file.url, urlFileTerminal: project.virtualFileSystem!.urlFileTerminal)
-                    } label: {
-                        Image(systemName: "arrowtriangle.forward.fill")
+                let terminalView = TerminalView(project.virtualFileSystem!)
+                VStack {
+                    codeEditor.toolbar {
+                        Button {
+                            let file = (selectedVFSContainer!.component as! VFSFile)
+                            runPythonFile(url: file.url,
+                                          urlFileTerminal: project.virtualFileSystem!.urlFileTerminal,
+                                          urlStdin: project.virtualFileSystem!.urlFileStdin)
+                        } label: {
+                            Image(systemName: "arrowtriangle.forward.fill")
+                        }.keyboardShortcut("R", modifiers: .command)
+                    }
+                    .toolbar {
+                        Button {
+                            isShowingSheet.toggle()
+                        } label: {
+                            Image(systemName: "terminal")
+                        }.keyboardShortcut("T", modifiers: .command)
+                    }
+                    .toolbar {
+                        Button("Analyze") {
+                            let file = (selectedVFSContainer!.component as! VFSFile)
+                            analysePythonCode(file: file)
+                        }.keyboardShortcut("A", modifiers: .command)
+                    }
+                    if isShowingSheet {
+                        let _ = terminalView.model.timer!.start()
+                        terminalView
+                    } else {
+                        let _ = terminalView.model.timer!.stop()
                     }
                 }
-                .toolbar {
-                    Button {
-                        if !isShowingSheet {
-                            TerminalView(virtualFileSystem: project.virtualFileSystem!).terminal.stop()
-                        }
-                        isShowingSheet.toggle()
-                    } label: {
-                        Image(systemName: "terminal")
-                    }
-                }
-                .toolbar {
-                    Button("Analyze") {
-                        let file = (selectedVFSContainer!.component as! VFSFile)
-                        analysePythonCode(file: file)
-                    }
-                }
-                .sheet(isPresented: $isShowingSheet) {
-                    let terminalView = TerminalView(virtualFileSystem: project.virtualFileSystem!)
-                    let terminal = terminalView.terminal
-                    let _ = terminal.start()
-                    
-                    terminalView
-                }
+                
             }
         }
     }

@@ -20,7 +20,7 @@ func settingsPython(urlLib: URL) {
     logger.debug("Установка PYTHONHOME: \(stdLibPath.path()):\(libDynloadPath.path())")
 }
 
-func runPythonFile(url: URL, urlFileTerminal: URL) {
+func runPythonFile(url: URL, urlFileTerminal: URL, urlStdin: URL) {
     let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-run_file")
     let code = """
     import sys
@@ -28,21 +28,31 @@ func runPythonFile(url: URL, urlFileTerminal: URL) {
     if '\(url.deletingLastPathComponent().path())' not in sys.path:
         sys.path.append('\(url.deletingLastPathComponent().path())')
 
-    filename = "\(urlFileTerminal.path())"
+    filename_terminal = "\(urlFileTerminal.path())"
+    with open(filename_terminal, "w") as file:
+        file.write("")
+    sys.stdout = open(filename_terminal, "a")
+    
+    def decorator(self):
+        def f():
+            while True:
+                try:
+                    row = next(self)
+                except StopIteration:
+                    continue
+                self.seek(0)
+                if row:
+                    with open("\(urlStdin.path())", "w") as file:
+                        file.write("")
+                    return row
+        return f
 
-    def write(msg):
-        with open(filename, "a") as file:
-            file.write(msg)
 
-
-    #sys.stdout.write = write
+    sys.stdin = open("\(urlStdin.path())")
+    sys.stdin.readline = decorator(sys.stdin)
     
     import \(url.lastPathComponent.components(separatedBy: ".")[0])
     """
-    defer {
-        
-    }
-    
     DispatchQueue.global().async {
         Py_Initialize()
         let uuid = UUID()

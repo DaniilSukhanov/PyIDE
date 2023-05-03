@@ -12,7 +12,7 @@ struct VirtualFileSystemView: View {
     @StateObject var rootDirectory: VFSDirectory
     @Binding private var selectedVFSContainer: VFSContainer?
     @State private var isShowingSheet = false
-    @State private var selectedDirectory: VFSContainer
+    @State private var selectedDirectory: VFSContainer?
     
     init (virtualFileSystem: VirtualFileSystem, selectedVFSContainer: Binding<VFSContainer?>) {
         self.virtualFileSystem = virtualFileSystem
@@ -31,6 +31,7 @@ struct VirtualFileSystemView: View {
                             .swipeActions {
                                 Button {
                                     selectedDirectory = item
+                                    isShowingSheet = true
                                 } label: {
                                     Text("new file")
                                 }
@@ -38,7 +39,7 @@ struct VirtualFileSystemView: View {
                     } else {
                         Button(component.name) {
                             selectedVFSContainer = item
-                        }
+                        }.underline(selectedVFSContainer == item)
                     }
                 }.swipeActions {
                     Button("delete") {

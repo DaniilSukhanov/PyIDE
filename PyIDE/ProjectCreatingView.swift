@@ -13,10 +13,13 @@ struct ProjectCreatingView: View {
     @State private var nameProject = ""
     
     var body: some View {
-        TextField("", text: $nameProject)
-        Button("Create a new Project") {
-            collectionProjects.append(try! Project(name: nameProject))
-        }
+        VStack(alignment: .leading, spacing: 3) {
+            TextField("Name project", text: $nameProject).font(.title3).border(.black)
+            Spacer()
+            Button("Create a new Project") {
+                collectionProjects.append(try! Project(name: nameProject))
+            }.keyboardShortcut("N", modifiers: .command)
+        }.padding(5)
     }
 }
 

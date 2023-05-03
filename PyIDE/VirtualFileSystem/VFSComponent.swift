@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OSLog
 
 struct VFSContainer: Hashable, Identifiable {
     var id: ObjectIdentifier
@@ -30,8 +31,14 @@ class VFSComponent: Hashable, Identifiable, CustomStringConvertible, ObservableO
             url = url.appendingPathComponent(newValue)
         }
     }
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "vfscomponent")
     
     @Published var storedComponents: [VFSContainer]?
+    var storedDirectories: [VFSContainer]? {
+        storedComponents?.filter {
+            $0.component is VFSDirectory
+        }
+    }
     private(set) var url: URL
     var urlJSONAST: URL {
         var array = url.pathComponents
@@ -112,6 +119,7 @@ class VFSFile: VFSComponent {
      Загружает в компонент данные из физического файла
      */
     func pullData() {
+        logger.info("Загрузка данных из \(self.url)")
         data = try! String(contentsOf: url)
     }
     
@@ -119,6 +127,8 @@ class VFSFile: VFSComponent {
      Записывает в физический файл данные
      */
     func pushData(_ data: String) {
+        logger.info("Выгрузка данных в \(self.url)")
+        logger.info("Данные:\n\(data)")
         try! data.write(to: url, atomically: false, encoding: .utf8)
     }
     
@@ -128,7 +138,6 @@ class VFSFile: VFSComponent {
     func getJSONData() -> ASTComponent {
         let decoder = JSONDecoder()
         let data = try! Data(contentsOf: urlJSONAST)
-        print(data)
         let result = try! decoder.decode(ASTComponent.self, from: data)
         return result
     }
