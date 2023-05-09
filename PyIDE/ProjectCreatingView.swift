@@ -16,7 +16,7 @@ struct ProjectCreatingView: View {
         VStack(alignment: .leading, spacing: 3) {
             TextField("Name project", text: $nameProject).font(.title3).border(.black)
             Spacer()
-            Button("Create a new Project") {
+            Button("Create a new project") {
                 collectionProjects.append(try! Project(name: nameProject))
             }.keyboardShortcut("N", modifiers: .command)
         }.padding(5)

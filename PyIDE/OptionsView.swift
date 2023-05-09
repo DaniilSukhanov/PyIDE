@@ -35,8 +35,25 @@ struct OptionsView: View {
             }.navigationDestination(for: Project.self) { project in
                 ProjectView(project: project)
             }
+        }.onAppear() {
+            let manager = FileManager.default
+            guard var url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                return
+            }
+            url.append(path: "PyIDEProjects")
+            if !manager.fileExists(atPath: url.path()) {
+                return
+            }
+            var files: [URL]
+            do {
+                files = try manager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
+            } catch {
+                return
+            }
+            for file in files where file.lastPathComponent != ".DS_Store" {
+                try! projects.append(Project(name: file.lastPathComponent))
+            }
         }
-        
     }
 }
 

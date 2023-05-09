@@ -8,23 +8,51 @@
 import Foundation
 import UIKit
 
-struct ASTComponent: Decodable {
+protocol ASTComponentable {
+    var type: String { get }
+}
+
+struct ASTComponent: ASTComponentable, Decodable, Hashable {
+    private enum CodingKeys: String, CodingKey {
+        case function = "func"
+        case type, lineno, name, col_offset, end_lineno,
+             end_col_offset, id, body, targets, orelse, value
+    }
+    
+    let type: String
+    let lineno: Int?
+    let name: String?
+    let col_offset: Int?
+    let end_lineno: Int?
+    let end_col_offset: Int?
+    let id: String?
+    let function: ASTName?
+    let body: [ASTComponent]?
+    let targets: [ASTComponent]?
+    let orelse: [ASTComponent]?
+    let value: ASTValue?
+}
+
+struct ASTName: ASTComponentable, Decodable, Hashable {
     let type: String
     let lineno: Int?
     let col_offset: Int?
     let end_lineno: Int?
     let end_col_offset: Int?
-    let body: [ASTComponent]?
-    let orelse: [ASTComponent]?
+    let id: String?
+}
 
-    func color() -> UIColor? {
-        var color: UIColor?
-        switch type {
-        case "Import", "FunctionDef", "For", "While", "If", "Return", "AsyncFunctionDef", "ImportFrom", "With":
-            color = UIColor.orange
-        default:
-            return nil
-        }
-        return color
+struct ASTValue: ASTComponentable, Decodable, Hashable {
+    private enum CodingKeys: String, CodingKey {
+        case function = "func"
+        case type, lineno, col_offset, end_lineno,
+             end_col_offset, id
     }
+    let type: String
+    let function: ASTName?
+    let lineno: Int?
+    let col_offset: Int?
+    let end_lineno: Int?
+    let end_col_offset: Int?
+    let id: String?
 }

@@ -15,6 +15,16 @@ struct ProjectSelectionView: View {
         List(collectionProjects) { project in
             Button(project.name) {
                 listViews.append(project)
+            }.swipeActions {
+                Button() {
+                    let manager = FileManager.default
+                    collectionProjects.removeAll {
+                        $0 == project
+                    }
+                    try! manager.removeItem(at: project.virtualFileSystem!.rootDirectory.url)
+                } label: {
+                    Text("delete")
+                }
             }
         }
     }

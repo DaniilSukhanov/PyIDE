@@ -11,13 +11,14 @@ struct ProjectView: View {
     @StateObject var project: Project
     @State private var selectedVFSContainer: VFSContainer?
     @State private var isShowingSheet = false
+    @State private var cursorPosition: Int?
 
     var body: some View {
         NavigationSplitView {
             VirtualFileSystemView(virtualFileSystem: project.virtualFileSystem!, selectedVFSContainer: $selectedVFSContainer)
         } detail: {
             if selectedVFSContainer != nil {
-                let codeEditor = CodeEditor(container: $selectedVFSContainer)
+                let codeEditor = CodeEditor(container: $selectedVFSContainer, cursorPosition: $cursorPosition)
                 let terminalView = TerminalView(project.virtualFileSystem!)
                 VStack {
                     codeEditor.toolbar {
@@ -37,12 +38,8 @@ struct ProjectView: View {
                             Image(systemName: "terminal")
                         }.keyboardShortcut("T", modifiers: .command)
                     }
-                    .toolbar {
-                        Button("Analyze") {
-                            let file = (selectedVFSContainer!.component as! VFSFile)
-                            analysePythonCode(file: file)
-                        }.keyboardShortcut("A", modifiers: .command)
-                    }
+                    TipsView(selectedVFSContainer: $selectedVFSContainer,
+                             cursorPosition: $cursorPosition)
                     if isShowingSheet {
                         let _ = terminalView.model.timer!.start()
                         terminalView
