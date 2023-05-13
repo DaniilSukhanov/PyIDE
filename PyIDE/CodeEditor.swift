@@ -32,8 +32,8 @@ struct CodeEditor: UIViewRepresentable {
     private(set) var uiTextView: UITextView = .init()
     let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "code-editor")
     let words = [
-        "if", "elif", "else", "from", "import", "for", "def", "async", "await",
-        "try", "while", "class", "return", "pass", "yield"
+        "if", "elif", "else", "from", "import", "for", "def", "async",
+        "await", "try", "while", "class", "return", "pass", "yield"
     ]
 
     func makeCoordinator() -> Coordinator {

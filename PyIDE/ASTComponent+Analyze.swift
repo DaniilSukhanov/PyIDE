@@ -52,7 +52,10 @@ extension ASTComponent {
         for children in body {
             switch children.type {
             case "Assign":
-                components[children.targets![0]] = children.value!.function!
+                guard let function = children.value?.function else {
+                    continue
+                }
+                components[children.targets![0]] = function
             default:
                 guard let result = getVariable(children) else {
                     continue
