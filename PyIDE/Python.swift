@@ -21,9 +21,10 @@ func settingsPython(urlLib: URL) {
 }
 
 func runPythonFile(url: URL, urlFileTerminal: URL, urlStdin: URL) {
-    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-run_file")
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-run-file")
     let code = """
     import sys
+    import traceback
     
     if '\(url.deletingLastPathComponent().path())' not in sys.path:
         sys.path.append('\(url.deletingLastPathComponent().path())')
@@ -47,11 +48,13 @@ func runPythonFile(url: URL, urlFileTerminal: URL, urlStdin: URL) {
                     return row
         return f
 
-
     sys.stdin = open("\(urlStdin.path())")
     sys.stdin.readline = decorator(sys.stdin)
     
-    import \(url.lastPathComponent.components(separatedBy: ".")[0])
+    try:
+        import \(url.lastPathComponent.components(separatedBy: ".")[0])
+    except:
+        sys.stdout.write(traceback.format_exc())
     """
     DispatchQueue.global().async {
         Py_Initialize()
@@ -63,7 +66,7 @@ func runPythonFile(url: URL, urlFileTerminal: URL, urlStdin: URL) {
     }
 }
 
-func analysePythonCode(file: VFSFile) {
+func buildAST(file: VFSFile) {
     let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "python-ast")
     let code = """
     import ast
@@ -87,7 +90,7 @@ func analysePythonCode(file: VFSFile) {
 
 
     def main():
-        with open("\(file.url.path())") as f:
+        with open("\(file.url.path())", encoding="utf-8") as f:
             data = f.read()
         tree = ast.parse(data)
         result = get_dict_by_obj(tree)

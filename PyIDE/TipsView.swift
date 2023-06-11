@@ -27,20 +27,17 @@ struct TipsView: View {
             return result
         }
         let dataFile = file.data!
-        guard let (row, _) = getCoordsCursor(dataFile, cursorPosition) else {
-            return result
-        }
         let rootComponent = file.getJSONData()
         let methods = rootComponent.getMethods()
         let variables = rootComponent.getVariable()
-        guard let string = try? dataFile.getFragment(cursorPosition) else {
-            return result
-        }
+        let string = dataFile.getFragment(cursorPosition == dataFile.count ? cursorPosition - 1 : cursorPosition)
+        print(string)
         if !string.contains(".") {
             return result
         }
         guard let cls = variables?.first(where: { (key, _) in
-            key.id! == string.components(separatedBy: ".")[0]
+            
+            return key.id! == string.components(separatedBy: ".")[0]
         })?.value else {
             return result
         }
@@ -108,15 +105,28 @@ fileprivate extension String {
         if self.isEmpty {
             return self
         }
+        guard (0..<self.count).contains(cursorPosition) else {
+            return self
+        }
+        
         var left = cursorPosition, right = cursorPosition
-        let chars = [" ", "\t", "\n"]
-        while left != 0 && !chars.contains(String(self[self.index(self.startIndex, offsetBy: left - 1)])) {
+        let chars: [Character] = [" ", "\t", "\n"]
+        var char: Character
+        repeat {
+            char = self[self.index(self.startIndex, offsetBy: left)]
             left -= 1
-        }
-        while right < self.count && !chars.contains(String(self[self.index(self.startIndex, offsetBy: right - 1)])) {
+            if left < 0 {
+                break
+            }
+        } while !chars.contains(char)
+        repeat {
+            char = self[self.index(self.startIndex, offsetBy: right)]
             right += 1
-        }
-        let range = self.index(self.startIndex, offsetBy: left == 0 ? 0 : left - 1)...self.index(self.startIndex, offsetBy: right - 1)
+            if right >= self.count {
+                break
+            }
+        } while !chars.contains(char)
+        let range = self.index(self.startIndex, offsetBy: left <= 0 ? 0 : left - 1)...self.index(self.startIndex, offsetBy: right - 1)
         return String(self[range]).replacing(" ", with: "").replacing("\n", with: "").replacing("\t", with: "")
     }
 }

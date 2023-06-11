@@ -94,7 +94,7 @@ class VFSFile: VFSComponent {
         super.init(name, parentDirectory: parentDirectory)
         try! create()
         pullData()
-        analysePythonCode(file: self)
+        buildAST(file: self)
     }
     
     required init(_ name: String, url: URL) {
@@ -130,7 +130,7 @@ class VFSFile: VFSComponent {
         logger.info("Выгрузка данных в \(self.url)")
         logger.info("Данные:\n\(data)")
         try! data.write(to: url, atomically: false, encoding: .utf8)
-        analysePythonCode(file: self)
+        buildAST(file: self)
     }
     
     /**

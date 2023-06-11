@@ -13,7 +13,7 @@ struct OptionsView: View {
         case selectingProject = "Select a project"
         case creatingProject = "Create a new project"
     }
-
+    
     @State private var text = ""
     @EnvironmentObject var listViews: ListViews
     @State private var selectedDetailView: DetailContentViews?
@@ -22,18 +22,42 @@ struct OptionsView: View {
     var body: some View {
         NavigationStack(path: $listViews.data) {
             NavigationSplitView {
-                Text("Welcome to PyIDE").font(.largeTitle)
-                List(DetailContentViews.allCases, id: \.self, selection: $selectedDetailView) { detailView in
-                    Text(detailView.rawValue)
-                }.listStyle(.insetGrouped)
+                List(DetailContentViews.allCases, id: \.self) { detailView in
+                    HStack {
+                        Text(detailView.rawValue)
+                        Spacer()
+                    }.contentShape(Rectangle()).onTapGesture {
+                        selectedDetailView = detailView
+                    }
+                    
+                }.listStyle(.insetGrouped).toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Welcome to PyIDE").font(.largeTitle).fixedSize()
+                    }
+                }
             } detail: {
                 switch selectedDetailView {
-                case .selectingProject: ProjectSelectionView(collectionProjects: $projects)
-                case .creatingProject: ProjectCreatingView(collectionProjects: $projects)
-                case .none: Text("")
+                case .creatingProject:
+                    ProjectCreatingView()
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                Text("Create a project").font(.largeTitle).fixedSize()
+                            }
+                        }
+                case .selectingProject:
+                    ProjectSelectionView()
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                Text("Projects").font(.largeTitle).fixedSize()
+                            }
+                        }
+                case .none:
+                    Text("None")
                 }
+                
             }.navigationDestination(for: Project.self) { project in
                 ProjectView(project: project)
+                    .navigationBarBackButtonHidden(true)
             }
         }.onAppear() {
             let manager = FileManager.default
@@ -53,10 +77,10 @@ struct OptionsView: View {
             for file in files where file.lastPathComponent != ".DS_Store" {
                 try! projects.append(Project(name: file.lastPathComponent))
             }
-        }
+        }.environment(\.projects, $projects)
+        
     }
 }
-
 
 struct OptionsView_Previews: PreviewProvider {
     static var previews: some View {

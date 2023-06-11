@@ -14,6 +14,7 @@ struct CreatingFileView: View {
     @State private var isDirectory = false
     @ObservedObject var virtualFileSystem: VirtualFileSystem
     @Environment(\.dismiss) var dismiss
+    @State private var isShowingAlert = false
     
     var body: some View {
         VStack {
@@ -30,9 +31,12 @@ struct CreatingFileView: View {
                 TextField("filename", text: $filename).autocorrectionDisabled(false)
                 Toggle("Directory", isOn: $isDirectory)
             }
-            Button("Create in the \(currentContainer?.component.name ?? "")") {
-                let component = currentContainer!.component as? VFSDirectory
-                guard let directory = component else {
+            Button("Create in the \(currentContainer?.component.name ?? "(select a directory)")") {
+                guard let component = currentContainer?.component  else {
+                    isShowingAlert = true
+                    return
+                }
+                guard let directory = component as? VFSDirectory else {
                     return
                 }
                 if isDirectory {
@@ -43,7 +47,14 @@ struct CreatingFileView: View {
                 virtualFileSystem.updateStoredComponents()
                 dismiss()
             }
+        }.alert("Failed to create", isPresented: $isShowingAlert) {
+            Button("OK") {
+                isShowingAlert = false
+            }
+        } message: {
+            Text("please select the directory where you want to create the file or another directory")
         }
+
     }
 }
 

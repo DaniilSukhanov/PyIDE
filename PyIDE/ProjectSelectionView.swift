@@ -8,22 +8,32 @@
 import SwiftUI
 
 struct ProjectSelectionView: View {
-    @Binding var collectionProjects: [Project]
     @EnvironmentObject var listViews: ListViews
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.projects) var projects
     
     var body: some View {
-        List(collectionProjects) { project in
+        List(projects.wrappedValue) { project in
             Button(project.name) {
                 listViews.append(project)
+                dismiss()
             }.swipeActions {
                 Button() {
                     let manager = FileManager.default
-                    collectionProjects.removeAll {
+                    projects.wrappedValue.removeAll {
                         $0 == project
                     }
                     try! manager.removeItem(at: project.virtualFileSystem!.rootDirectory.url)
                 } label: {
                     Text("delete")
+                }
+            }
+        }.toolbar {
+            ToolbarItem(placement: .secondaryAction) {
+                Button() {
+                    
+                } label: {
+                    Image(systemName: "plus")
                 }
             }
         }
@@ -34,7 +44,7 @@ struct ProjectSelectionView_Previews: PreviewProvider {
     @State static private var collectionProjects = try! [Project(name: "Parser"), Project(name: "Calculator")]
     
     static var previews: some View {
-        ProjectSelectionView(collectionProjects: $collectionProjects)
+        ProjectSelectionView()
     }
 }
 

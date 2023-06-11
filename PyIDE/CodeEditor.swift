@@ -45,7 +45,9 @@ struct CodeEditor: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UITextView, context: Context) {
-        let file = container!.component as! VFSFile
+        guard let file = container!.component as? VFSFile else {
+            return
+        }
         uiView.text = file.data!
         updateHighlightingCode(uiView)
         uiView.autocapitalizationType = .none

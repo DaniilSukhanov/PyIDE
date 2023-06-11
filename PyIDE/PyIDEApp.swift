@@ -12,7 +12,6 @@ import OSLog
 @main
 struct PyIDEApp: App {
     @StateObject private var listViews = ListViews()
-    @State private var projects = [Project]()
     
     init() {
         let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "pre-start")

@@ -15,6 +15,7 @@
 		E43ED2EB2A0800D600A00FB0 /* ASTComponent+Analyze.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43ED2EA2A0800D600A00FB0 /* ASTComponent+Analyze.swift */; };
 		E43ED2ED2A08404300A00FB0 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43ED2EC2A08404300A00FB0 /* TipsView.swift */; };
 		E47D33D129E4232500D0C3C4 /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47D33D029E4232500D0C3C4 /* Python.xcframework */; };
+		E482129C2A25140700F6C4A3 /* EnvironmentValues+projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E482129B2A25140600F6C4A3 /* EnvironmentValues+projects.swift */; };
 		E48316E329562487008ED43A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E48316E229562487008ED43A /* Settings.bundle */; };
 		E48316EB29578D67008ED43A /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48316EA29578D67008ED43A /* ProjectView.swift */; };
 		E48316EF29578E31008ED43A /* VirtualFileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48316EE29578E31008ED43A /* VirtualFileSystem.swift */; };
@@ -42,6 +43,7 @@
 		E43ED2EA2A0800D600A00FB0 /* ASTComponent+Analyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASTComponent+Analyze.swift"; sourceTree = "<group>"; };
 		E43ED2EC2A08404300A00FB0 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		E47D33D029E4232500D0C3C4 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Python.xcframework; sourceTree = "<group>"; };
+		E482129B2A25140600F6C4A3 /* EnvironmentValues+projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+projects.swift"; sourceTree = "<group>"; };
 		E48316E229562487008ED43A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E48316EA29578D67008ED43A /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		E48316EE29578E31008ED43A /* VirtualFileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualFileSystem.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				E4C2B0F029E86E67002BBF10 /* String+FindWords.swift */,
 				E43ED2EA2A0800D600A00FB0 /* ASTComponent+Analyze.swift */,
 				E43ED2EC2A08404300A00FB0 /* TipsView.swift */,
+				E482129B2A25140600F6C4A3 /* EnvironmentValues+projects.swift */,
 			);
 			path = PyIDE;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				E43E82382A01CF0600C6A8A6 /* Timer+Init.swift in Sources */,
 				E48316EB29578D67008ED43A /* ProjectView.swift in Sources */,
 				E48E28512943C440005CFDAE /* Project.swift in Sources */,
+				E482129C2A25140700F6C4A3 /* EnvironmentValues+projects.swift in Sources */,
 				E43ED2EB2A0800D600A00FB0 /* ASTComponent+Analyze.swift in Sources */,
 				E4B0B82B29CA510600588DB2 /* ASTComponents.swift in Sources */,
 				E48316EF29578E31008ED43A /* VirtualFileSystem.swift in Sources */,
