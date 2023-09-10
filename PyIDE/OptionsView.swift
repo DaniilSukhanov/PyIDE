@@ -78,7 +78,6 @@ struct OptionsView: View {
                 try! projects.append(Project(name: file.lastPathComponent))
             }
         }.environment(\.projects, $projects)
-        
     }
 }
 

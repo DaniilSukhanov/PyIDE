@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "49D1D099-9B9E-4335-8787-91A6959144D6",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:PyIDE.xcodeproj",
+      "identifier" : "E4ABB7A4291EA78A00AE1E1D",
+      "name" : "PyIDE"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:PyIDE.xcodeproj",
+        "identifier" : "E47A77852AB38D440079A748",
+        "name" : "PyIDETests"
+      }
+    }
+  ],
+  "version" : 1
+}
