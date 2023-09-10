@@ -11,6 +11,7 @@ struct ProjectView: View {
     @StateObject var project: Project
     @State private var selectedVFSContainer: VFSContainer?
     @State private var isShowingSheet = false
+    @State private var isShowingTerminal = false
     @State private var cursorPosition: Int?
     @EnvironmentObject var listViews: ListViews
     
@@ -36,14 +37,14 @@ struct ProjectView: View {
                     }
                     .toolbar {
                         Button {
-                            isShowingSheet.toggle()
+                            isShowingTerminal.toggle()
                         } label: {
                             Image(systemName: "terminal")
                         }.keyboardShortcut("T", modifiers: .command)
                     }
                     TipsView(selectedVFSContainer: $selectedVFSContainer,
                              cursorPosition: $cursorPosition)
-                    if isShowingSheet {
+                    if isShowingTerminal {
                         let _ = terminalView.model.timer!.start()
                         terminalView
                     } else {
