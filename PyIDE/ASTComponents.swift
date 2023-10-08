@@ -14,8 +14,7 @@ protocol ASTComponentable {
 
 struct ASTComponent: ASTComponentable, Decodable, Hashable {
     private enum CodingKeys: String, CodingKey {
-        case function = "func"
-        case type, lineno, name, col_offset, end_lineno,
+        case `func`, type, lineno, name, col_offset, end_lineno,
              end_col_offset, id, body, targets, orelse, value
     }
     
@@ -26,7 +25,7 @@ struct ASTComponent: ASTComponentable, Decodable, Hashable {
     let end_lineno: Int?
     let end_col_offset: Int?
     let id: String?
-    let function: ASTName?
+    let `func`: ASTName?
     let body: [ASTComponent]?
     let targets: [ASTComponent]?
     let orelse: [ASTComponent]?

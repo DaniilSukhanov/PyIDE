@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		E42C56B42990395C00827C0B /* CreatingFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C56B32990395C00827C0B /* CreatingFileView.swift */; };
+		E42CB6B62AC0B56600160C4A /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42CB6B52AC0B56600160C4A /* Python.xcframework */; };
+		E42FED312B5ADA920024E6BA /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = E42FED302B5ADA920024E6BA /* PythonKit */; };
 		E432B1222965A6D4008CE2DC /* VirtualFileSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432B1212965A6D4008CE2DC /* VirtualFileSystemView.swift */; };
 		E432B13F2969F5DB008CE2DC /* VFSComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432B13E2969F5DB008CE2DC /* VFSComponent.swift */; };
 		E43B541F295F773F00A0516E /* ListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B541E295F773F00A0516E /* ListViews.swift */; };
 		E43E82382A01CF0600C6A8A6 /* Timer+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43E82372A01CF0600C6A8A6 /* Timer+Init.swift */; };
 		E43ED2EB2A0800D600A00FB0 /* ASTComponent+Analyze.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43ED2EA2A0800D600A00FB0 /* ASTComponent+Analyze.swift */; };
 		E43ED2ED2A08404300A00FB0 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43ED2EC2A08404300A00FB0 /* TipsView.swift */; };
-		E47D33D129E4232500D0C3C4 /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47D33D029E4232500D0C3C4 /* Python.xcframework */; };
+		E47A77892AB38D440079A748 /* PyIDETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47A77882AB38D440079A748 /* PyIDETests.swift */; };
 		E482129C2A25140700F6C4A3 /* EnvironmentValues+projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E482129B2A25140600F6C4A3 /* EnvironmentValues+projects.swift */; };
 		E48316E329562487008ED43A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E48316E229562487008ED43A /* Settings.bundle */; };
 		E48316EB29578D67008ED43A /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48316EA29578D67008ED43A /* ProjectView.swift */; };
@@ -28,21 +30,41 @@
 		E4ABB7B0291EA78C00AE1E1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4ABB7AF291EA78C00AE1E1D /* Preview Assets.xcassets */; };
 		E4B0B82B29CA510600588DB2 /* ASTComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B0B82A29CA510600588DB2 /* ASTComponents.swift */; };
 		E4C2B0F129E86E67002BBF10 /* String+FindWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C2B0F029E86E67002BBF10 /* String+FindWords.swift */; };
+		E4CF227C2AB2399F00DD75A3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E4CF227B2AB2399F00DD75A3 /* .swiftlint.yml */; };
 		E4EBEE5129392D1000664DBB /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE5029392D1000664DBB /* OptionsView.swift */; };
 		E4EBEE5329392E3100664DBB /* ProjectSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE5229392E3100664DBB /* ProjectSelectionView.swift */; };
 		E4EBEE612939325500664DBB /* ProjectCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EBEE602939325500664DBB /* ProjectCreatingView.swift */; };
 		E4F714DB29B3D891006C58B5 /* Python.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F714DA29B3D891006C58B5 /* Python.swift */; };
+		E4F83F812B3225200090FC1A /* ItemDictionary.c in Sources */ = {isa = PBXBuildFile; fileRef = E4F83F7A2B3225200090FC1A /* ItemDictionary.c */; };
+		E4F83F822B3225200090FC1A /* WriteTerminal.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F83F7C2B3225200090FC1A /* WriteTerminal.m */; };
+		E4F83F832B3225200090FC1A /* PythonRun.c in Sources */ = {isa = PBXBuildFile; fileRef = E4F83F7D2B3225200090FC1A /* PythonRun.c */; };
+		E4F83F872B3227DA0090FC1A /* PythonProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F83F842B3227DA0090FC1A /* PythonProgram.swift */; };
+		E4F83F882B3227DA0090FC1A /* WriteTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F83F852B3227DA0090FC1A /* WriteTerminal.swift */; };
+		E4F83F892B3227DA0090FC1A /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F83F862B3227DA0090FC1A /* Program.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E47A778A2AB38D440079A748 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4ABB79D291EA78A00AE1E1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4ABB7A4291EA78A00AE1E1D;
+			remoteInfo = PyIDE;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E42C56B32990395C00827C0B /* CreatingFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingFileView.swift; sourceTree = "<group>"; };
+		E42CB6B52AC0B56600160C4A /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Python.xcframework; path = ../../Desktop/Python.xcframework; sourceTree = "<group>"; };
+		E42CB6C22AC1670900160C4A /* PyIDE.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PyIDE.xctestplan; sourceTree = "<group>"; };
 		E432B1212965A6D4008CE2DC /* VirtualFileSystemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualFileSystemView.swift; sourceTree = "<group>"; };
 		E432B13E2969F5DB008CE2DC /* VFSComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFSComponent.swift; sourceTree = "<group>"; };
 		E43B541E295F773F00A0516E /* ListViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViews.swift; sourceTree = "<group>"; };
 		E43E82372A01CF0600C6A8A6 /* Timer+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timer+Init.swift"; sourceTree = "<group>"; };
 		E43ED2EA2A0800D600A00FB0 /* ASTComponent+Analyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASTComponent+Analyze.swift"; sourceTree = "<group>"; };
 		E43ED2EC2A08404300A00FB0 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
-		E47D33D029E4232500D0C3C4 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Python.xcframework; sourceTree = "<group>"; };
+		E47A77862AB38D440079A748 /* PyIDETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PyIDETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E47A77882AB38D440079A748 /* PyIDETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyIDETests.swift; sourceTree = "<group>"; };
 		E482129B2A25140600F6C4A3 /* EnvironmentValues+projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+projects.swift"; sourceTree = "<group>"; };
 		E48316E229562487008ED43A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E48316EA29578D67008ED43A /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
@@ -56,6 +78,7 @@
 		E4ABB7AF291EA78C00AE1E1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E4B0B82A29CA510600588DB2 /* ASTComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTComponents.swift; sourceTree = "<group>"; };
 		E4C2B0F029E86E67002BBF10 /* String+FindWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FindWords.swift"; sourceTree = "<group>"; };
+		E4CF227B2AB2399F00DD75A3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E4CF91CC29E9AB2E0070B95D /* python-stdlib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "python-stdlib"; sourceTree = "<group>"; };
 		E4D7FDCA29B8C5D500200D35 /* PyIDE.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = PyIDE.entitlements; sourceTree = "<group>"; };
 		E4D7FDCB29B8C5E300200D35 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,14 +86,32 @@
 		E4EBEE5229392E3100664DBB /* ProjectSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSelectionView.swift; sourceTree = "<group>"; };
 		E4EBEE602939325500664DBB /* ProjectCreatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreatingView.swift; sourceTree = "<group>"; };
 		E4F714DA29B3D891006C58B5 /* Python.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Python.swift; sourceTree = "<group>"; };
+		E4F83F7A2B3225200090FC1A /* ItemDictionary.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ItemDictionary.c; sourceTree = "<group>"; };
+		E4F83F7B2B3225200090FC1A /* ItemDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDictionary.h; sourceTree = "<group>"; };
+		E4F83F7C2B3225200090FC1A /* WriteTerminal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteTerminal.m; sourceTree = "<group>"; };
+		E4F83F7D2B3225200090FC1A /* PythonRun.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = PythonRun.c; sourceTree = "<group>"; };
+		E4F83F7E2B3225200090FC1A /* PyIDE-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PyIDE-Bridging-Header.h"; sourceTree = "<group>"; };
+		E4F83F7F2B3225200090FC1A /* PythonRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PythonRun.h; sourceTree = "<group>"; };
+		E4F83F802B3225200090FC1A /* WriteTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteTerminal.h; sourceTree = "<group>"; };
+		E4F83F842B3227DA0090FC1A /* PythonProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PythonProgram.swift; sourceTree = "<group>"; };
+		E4F83F852B3227DA0090FC1A /* WriteTerminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteTerminal.swift; sourceTree = "<group>"; };
+		E4F83F862B3227DA0090FC1A /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E47A77832AB38D440079A748 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4ABB7A2291EA78A00AE1E1D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E47D33D129E4232500D0C3C4 /* Python.xcframework in Frameworks */,
+				E42CB6B62AC0B56600160C4A /* Python.xcframework in Frameworks */,
+				E42FED312B5ADA920024E6BA /* PythonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,13 +128,32 @@
 			path = VirtualFileSystem;
 			sourceTree = "<group>";
 		};
+		E443D9252AB24390008AB711 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E42CB6B52AC0B56600160C4A /* Python.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E47A77872AB38D440079A748 /* PyIDETests */ = {
+			isa = PBXGroup;
+			children = (
+				E47A77882AB38D440079A748 /* PyIDETests.swift */,
+			);
+			path = PyIDETests;
+			sourceTree = "<group>";
+		};
 		E4ABB79C291EA78A00AE1E1D = {
 			isa = PBXGroup;
 			children = (
+				E42CB6C22AC1670900160C4A /* PyIDE.xctestplan */,
+				E4CF227B2AB2399F00DD75A3 /* .swiftlint.yml */,
 				E4CF91CC29E9AB2E0070B95D /* python-stdlib */,
 				E4ABB7A7291EA78B00AE1E1D /* PyIDE */,
+				E47A77872AB38D440079A748 /* PyIDETests */,
 				E4ABB7A6291EA78B00AE1E1D /* Products */,
-				E4F714D529B3D7BB006C58B5 /* Frameworks */,
+				E443D9252AB24390008AB711 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				E4ABB7A5291EA78B00AE1E1D /* PyIDE.app */,
+				E47A77862AB38D440079A748 /* PyIDETests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +169,7 @@
 		E4ABB7A7291EA78B00AE1E1D /* PyIDE */ = {
 			isa = PBXGroup;
 			children = (
+				E4F83F792B3224FA0090FC1A /* Python */,
 				E4D7FDCB29B8C5E300200D35 /* Info.plist */,
 				E4D7FDCA29B8C5D500200D35 /* PyIDE.entitlements */,
 				E432B1232965AE48008CE2DC /* VirtualFileSystem */,
@@ -143,17 +205,44 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		E4F714D529B3D7BB006C58B5 /* Frameworks */ = {
+		E4F83F792B3224FA0090FC1A /* Python */ = {
 			isa = PBXGroup;
 			children = (
-				E47D33D029E4232500D0C3C4 /* Python.xcframework */,
+				E4F83F862B3227DA0090FC1A /* Program.swift */,
+				E4F83F842B3227DA0090FC1A /* PythonProgram.swift */,
+				E4F83F852B3227DA0090FC1A /* WriteTerminal.swift */,
+				E4F83F7A2B3225200090FC1A /* ItemDictionary.c */,
+				E4F83F7B2B3225200090FC1A /* ItemDictionary.h */,
+				E4F83F7E2B3225200090FC1A /* PyIDE-Bridging-Header.h */,
+				E4F83F7D2B3225200090FC1A /* PythonRun.c */,
+				E4F83F7F2B3225200090FC1A /* PythonRun.h */,
+				E4F83F802B3225200090FC1A /* WriteTerminal.h */,
+				E4F83F7C2B3225200090FC1A /* WriteTerminal.m */,
 			);
-			name = Frameworks;
+			path = Python;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E47A77852AB38D440079A748 /* PyIDETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E47A778C2AB38D450079A748 /* Build configuration list for PBXNativeTarget "PyIDETests" */;
+			buildPhases = (
+				E47A77822AB38D440079A748 /* Sources */,
+				E47A77832AB38D440079A748 /* Frameworks */,
+				E47A77842AB38D440079A748 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E47A778B2AB38D440079A748 /* PBXTargetDependency */,
+			);
+			name = PyIDETests;
+			productName = PyIDETests;
+			productReference = E47A77862AB38D440079A748 /* PyIDETests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E4ABB7A4291EA78A00AE1E1D /* PyIDE */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4ABB7B3291EA78C00AE1E1D /* Build configuration list for PBXNativeTarget "PyIDE" */;
@@ -161,6 +250,7 @@
 				E4ABB7A1291EA78A00AE1E1D /* Sources */,
 				E4ABB7A2291EA78A00AE1E1D /* Frameworks */,
 				E4ABB7A3291EA78A00AE1E1D /* Resources */,
+				E4CF227A2AB2395900DD75A3 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -168,6 +258,7 @@
 			);
 			name = PyIDE;
 			packageProductDependencies = (
+				E42FED302B5ADA920024E6BA /* PythonKit */,
 			);
 			productName = PyIDE;
 			productReference = E4ABB7A5291EA78B00AE1E1D /* PyIDE.app */;
@@ -180,11 +271,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					E47A77852AB38D440079A748 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = E4ABB7A4291EA78A00AE1E1D;
+					};
 					E4ABB7A4291EA78A00AE1E1D = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -199,21 +295,31 @@
 			);
 			mainGroup = E4ABB79C291EA78A00AE1E1D;
 			packageReferences = (
+				E42FED2F2B5ADA920024E6BA /* XCRemoteSwiftPackageReference "PythonKit" */,
 			);
 			productRefGroup = E4ABB7A6291EA78B00AE1E1D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				E4ABB7A4291EA78A00AE1E1D /* PyIDE */,
+				E47A77852AB38D440079A748 /* PyIDETests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E47A77842AB38D440079A748 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4ABB7A3291EA78A00AE1E1D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4CF227C2AB2399F00DD75A3 /* .swiftlint.yml in Resources */,
 				E48316E329562487008ED43A /* Settings.bundle in Resources */,
 				E4ABB7B0291EA78C00AE1E1D /* Preview Assets.xcassets in Resources */,
 				E4ABB7AD291EA78C00AE1E1D /* Assets.xcassets in Resources */,
@@ -223,11 +329,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E4CF227A2AB2395900DD75A3 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		E47A77822AB38D440079A748 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E47A77892AB38D440079A748 /* PyIDETests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4ABB7A1291EA78A00AE1E1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F83F812B3225200090FC1A /* ItemDictionary.c in Sources */,
 				E48316F529578FB0008ED43A /* TerminalView.swift in Sources */,
 				E48316F329578F89008ED43A /* CodeEditor.swift in Sources */,
 				E43B541F295F773F00A0516E /* ListViews.swift in Sources */,
@@ -235,16 +371,21 @@
 				E4EBEE5129392D1000664DBB /* OptionsView.swift in Sources */,
 				E4ABB7A9291EA78B00AE1E1D /* PyIDEApp.swift in Sources */,
 				E43ED2ED2A08404300A00FB0 /* TipsView.swift in Sources */,
+				E4F83F872B3227DA0090FC1A /* PythonProgram.swift in Sources */,
 				E4EBEE5329392E3100664DBB /* ProjectSelectionView.swift in Sources */,
+				E4F83F892B3227DA0090FC1A /* Program.swift in Sources */,
 				E42C56B42990395C00827C0B /* CreatingFileView.swift in Sources */,
 				E4F714DB29B3D891006C58B5 /* Python.swift in Sources */,
 				E432B1222965A6D4008CE2DC /* VirtualFileSystemView.swift in Sources */,
+				E4F83F832B3225200090FC1A /* PythonRun.c in Sources */,
 				E43E82382A01CF0600C6A8A6 /* Timer+Init.swift in Sources */,
 				E48316EB29578D67008ED43A /* ProjectView.swift in Sources */,
 				E48E28512943C440005CFDAE /* Project.swift in Sources */,
+				E4F83F822B3225200090FC1A /* WriteTerminal.m in Sources */,
 				E482129C2A25140700F6C4A3 /* EnvironmentValues+projects.swift in Sources */,
 				E43ED2EB2A0800D600A00FB0 /* ASTComponent+Analyze.swift in Sources */,
 				E4B0B82B29CA510600588DB2 /* ASTComponents.swift in Sources */,
+				E4F83F882B3227DA0090FC1A /* WriteTerminal.swift in Sources */,
 				E48316EF29578E31008ED43A /* VirtualFileSystem.swift in Sources */,
 				E4EBEE612939325500664DBB /* ProjectCreatingView.swift in Sources */,
 				E432B13F2969F5DB008CE2DC /* VFSComponent.swift in Sources */,
@@ -253,7 +394,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E47A778B2AB38D440079A748 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E4ABB7A4291EA78A00AE1E1D /* PyIDE */;
+			targetProxy = E47A778A2AB38D440079A748 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		E47A778D2AB38D450079A748 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BUK8VS7CA6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danchopancho.PyIDETests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PyIDE.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PyIDE";
+			};
+			name = Debug;
+		};
+		E47A778E2AB38D450079A748 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BUK8VS7CA6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danchopancho.PyIDETests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PyIDE.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PyIDE";
+			};
+			name = Release;
+		};
 		E4ABB7B1291EA78C00AE1E1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -379,6 +566,7 @@
 				APPLY_RULES_IN_COPY_FILES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = PyIDE/PyIDE.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -393,7 +581,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,7 +591,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PyIDE/Python/PyIDE-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_OBJC_INTEROP_MODE = objc;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -415,6 +608,7 @@
 				APPLY_RULES_IN_COPY_FILES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = PyIDE/PyIDE.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -429,7 +623,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -439,7 +633,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PyIDE/Python/PyIDE-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_OBJC_INTEROP_MODE = objc;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -448,6 +646,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E47A778C2AB38D450079A748 /* Build configuration list for PBXNativeTarget "PyIDETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E47A778D2AB38D450079A748 /* Debug */,
+				E47A778E2AB38D450079A748 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E4ABB7A0291EA78A00AE1E1D /* Build configuration list for PBXProject "PyIDE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -467,6 +674,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E42FED2F2B5ADA920024E6BA /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit?ysclid=lrkurwvu0934695158";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E42FED302B5ADA920024E6BA /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E42FED2F2B5ADA920024E6BA /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E4ABB79D291EA78A00AE1E1D /* Project object */;
 }
