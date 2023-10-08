@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class Project: ObservableObject, Identifiable, Hashable {
     private enum ProjectError: Error {
         case failedInitialize(Error)

@@ -9,24 +9,39 @@ import Foundation
 import SwiftUI
 import Combine
 
-class StreamingDataManager: ObservableObject {
-    @Published var string = ""
+@objc class StreamingDataManager: NSObject, ObservableObject {
+    @Published var textTerminal = ""
     var cancellables = Set<AnyCancellable>()
-    static fileprivate var instances = [String: StreamingDataManager]()
-    static let shared = StreamingDataManager()
+    @objc static let shared = StreamingDataManager()
+    private(set) static var queueInput = [String]()
+    @Published private(set) var positionBreakpoint: (filepath: String, numberLine: Int)?
     
-    init() {
-        $string
-        .sink { text in
-            StreamingDataManager.shared.string += text
-        }
-        .store(in: &cancellables)
+    override init() {
+        super.init()
+        $textTerminal
+            .sink { text in
+                print("result (swift): ", text)
+            }
+            .store(in: &cancellables)
     }
-}
-
-@objc public class ProgramMediator: NSObject {
     
-    @objc static func writeSwift(_ string: String) {
-        StreamingDataManager.shared.string += string
+    static func addInInput(data string: String) {
+        StreamingDataManager.queueInput.insert(string, at: 0)
+    }
+    
+    @objc static func popFromInput() -> String? {
+        if StreamingDataManager.queueInput.isEmpty {
+            return nil
+        }
+        return StreamingDataManager.queueInput.popLast()!
+    }
+    
+    @objc static func writeTerminal(_ string: String) {
+        StreamingDataManager.shared.textTerminal += string
+    }
+    
+    @objc func setBreakpoint(filepath: String, numberLine: Int) {
+        print("breakpoint", filepath, numberLine)
+        positionBreakpoint = (filepath: filepath, numberLine: numberLine)
     }
 }

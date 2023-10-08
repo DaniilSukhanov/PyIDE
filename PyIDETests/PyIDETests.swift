@@ -6,30 +6,40 @@
 //
 
 import XCTest
+@testable import PyIDE
+import Combine
 
 final class PyIDETests: XCTestCase {
+    var pythonRunner: PythonProgram!
+    var store = [AnyCancellable]()
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        pythonRunner = .init(name: "123", mainFile: .init(string: "123")!)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        pythonRunner = nil
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+        DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(4)) {
+            StreamingDataManager.addInInput(data: "StreamingDataManager!")
+            StreamingDataManager.addInInput(data: "StreamingDataManager!")
         }
+        
+        try? pythonRunner.runProgram()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    return
+                case .failure(let error):
+                    print(error)
+                }
+            } receiveValue: { value in
+                print(value)
+            }.store(in: &store)
+        sleep(6)
+
     }
 
 }
